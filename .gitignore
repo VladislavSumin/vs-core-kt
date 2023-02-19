@@ -1,6 +1,7 @@
 /.gradle/
 /.idea/
 
-/build-logic/.gradle/
+/core-build-logic/.gradle/
+/core-build-logic/build/
 
 /local.properties
