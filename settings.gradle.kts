@@ -2,6 +2,12 @@ rootProject.name = "vs-core-kt"
 
 pluginManagement {
     includeBuild("core-build-logic")
+
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
 }
 
 dependencyResolutionManagement {
