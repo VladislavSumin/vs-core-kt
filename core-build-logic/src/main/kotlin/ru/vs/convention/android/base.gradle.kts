@@ -1,5 +1,6 @@
 package ru.vs.convention.android
 
+import ru.vs.build_logic.configuration
 import ru.vs.build_logic.utils.android
 
 android {
@@ -11,7 +12,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        val version = JavaVersion.toVersion(project.configuration.jvmVersion)
+        sourceCompatibility = version
+        targetCompatibility = version
     }
 }
