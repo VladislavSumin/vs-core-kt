@@ -13,3 +13,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+rootProject.name = "core-build-logic"
