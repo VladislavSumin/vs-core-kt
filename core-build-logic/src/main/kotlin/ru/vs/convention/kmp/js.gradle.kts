@@ -5,12 +5,15 @@ plugins {
 }
 
 kotlin {
-    jvm()
+    js(IR) {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
-        named("jvmTest") {
+        named("jsTest") {
             dependencies {
-                implementation(kotlin("test-junit5"))
+                implementation(kotlin("test-js"))
             }
         }
     }

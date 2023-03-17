@@ -4,5 +4,6 @@
 /**/build/
 
 /core-build-logic/.gradle/
+/kotlin-js-store/
 
 /local.properties
