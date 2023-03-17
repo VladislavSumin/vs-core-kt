@@ -23,4 +23,5 @@ dependencies {
     implementation(coreLibs.gradlePlugins.kotlin.core)
     implementation(coreLibs.gradlePlugins.android)
     implementation(coreLibs.gradlePlugins.checkUpdates)
+    implementation(coreLibs.gradlePlugins.detekt)
 }
