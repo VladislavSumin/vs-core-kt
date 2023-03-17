@@ -1,15 +1,14 @@
 package ru.vs.convention.analyze
 
 import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.accessors.dm.LibrariesForCoreLibs
 import ru.vs.build_logic.tasks.CopyFromResourceTask
-
-//import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-//val libs = the<LibrariesForLibs>()
+val libs = the<LibrariesForCoreLibs>()
 
 val detektConfigFile = project.buildDir.resolve("detektConfig").resolve("detekt.yml")
 
@@ -38,6 +37,6 @@ tasks.named<Detekt>("detekt").configure {
     }
 }
 
-//dependencies {
-//    detektPlugins(libs.detekt.formatting)
-//}
+dependencies {
+    detektPlugins(libs.detekt.formatting)
+}

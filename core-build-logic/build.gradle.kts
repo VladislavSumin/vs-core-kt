@@ -20,6 +20,10 @@ publishing {
 }
 
 dependencies {
+    // TODO подождать пока эта фича появится в гредле
+    // а пока костыль вот отсюда https://github.com/gradle/gradle/issues/15383
+    implementation(files(coreLibs.javaClass.superclass.protectionDomain.codeSource.location))
+
     implementation(coreLibs.gradlePlugins.kotlin.core)
     implementation(coreLibs.gradlePlugins.android)
     implementation(coreLibs.gradlePlugins.checkUpdates)
