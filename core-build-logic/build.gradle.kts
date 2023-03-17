@@ -13,7 +13,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/vladislavsumin/vs-core-kt")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
-                password =System.getenv("GITHUB_TOKEN")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
