@@ -24,3 +24,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+include(":core:di")
