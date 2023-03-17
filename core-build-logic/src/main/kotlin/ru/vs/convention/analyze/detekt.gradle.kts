@@ -8,7 +8,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val libs = the<LibrariesForCoreLibs>()
+val libs = rootProject.the<LibrariesForCoreLibs>()
 
 val detektConfigFile = project.buildDir.resolve("detektConfig").resolve("detekt.yml")
 
