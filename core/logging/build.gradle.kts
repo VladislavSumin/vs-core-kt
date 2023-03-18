@@ -7,3 +7,13 @@ plugins {
 android {
     namespace = "ru.vs.core.logging"
 }
+
+kotlin {
+    sourceSets {
+        named("commonMain") {
+            dependencies {
+                implementation(coreLibs.kotlinLogging.core)
+            }
+        }
+    }
+}
