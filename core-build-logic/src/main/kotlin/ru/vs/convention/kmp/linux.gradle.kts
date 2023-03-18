@@ -6,5 +6,5 @@ plugins {
 
 kotlin {
     linuxX64()
-    linuxArm64()
+    // linuxArm64()
 }

@@ -25,5 +25,7 @@ dependencyResolutionManagement {
     }
 }
 
+include(":core:coroutines")
 include(":core:di")
+include(":core:ktor-server")
 include(":core:logging")

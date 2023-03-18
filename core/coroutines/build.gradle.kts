@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "ru.vs.core.logging"
+    namespace = "ru.vs.core.coroutines"
 }
 
 kotlin {
     sourceSets {
         named("commonMain") {
             dependencies {
-                api(coreLibs.kotlinLogging.core)
+                api(coreLibs.kotlin.coroutines.core)
             }
         }
     }

@@ -1,7 +1,7 @@
 [versions]
 # Kotlin
-kotlin-core = "1.8.0"
-#kotlin-coroutines = "1.6.4"
+kotlin-core = "1.8.10"
+kotlin-coroutines = "1.7.0-Beta"
 
 # Android
 #android-core = "1.9.0"
@@ -21,6 +21,7 @@ kotlin-core = "1.8.0"
 # Other
 kodein = "7.18.0"
 kotlinLogging = "4.0.0-beta-22"
+ktor = "2.2.4"
 #decompose = "1.0.0-alpha-06"
 #serial-usb = "3.4.6"
 #multiplatformSettings = "0.9"
@@ -43,12 +44,17 @@ gradlePlugins-checkUpdates = { module = "com.github.ben-manes:gradle-versions-pl
 #gradlePlugins-google-firebase-crashlytic = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "google-firebase-crashlytic" }
 #gradlePlugins-sqldelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "gradlePlugins-sqldelight" }
 gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "gradlePlugins-detekt" }
-#
-## Kotlin
-#kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+
+# Kotlin
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 #kotlin-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlin-coroutines" }
-#
-## Android
+
+# Ktor
+ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktor-server-cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
+
+
+# Android
 #android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
 #android-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "android-datastore" }
 #android-activity-core = { module = "androidx.activity:activity-ktx", version.ref = "android-activity" }
@@ -57,18 +63,18 @@ gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plu
 #android-compose-material = { module = "androidx.compose.material:material", version.ref = "android-compose-core" }
 #android-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "android-compose-core" }
 #android-compose-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "android-compose-core" }
-#
-## UI libs
+
+# UI libs
 #reorderable = { module = "org.burnoutcrew.composereorderable:reorderable", version.ref = "reorderable" }
-#
-## Google
+
+# Google
 #google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "google-firebase-bom" }
-#
-## Kodein
+
+# Kodein
 kodein-core = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
 #kodein-compose = { module = "org.kodein.di:kodein-di-framework-compose", version.ref = "kodein" }
-#
-## Decompose
+
+# Decompose
 #decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 #decompose-jetpack = { module = "com.arkivanov.decompose:extensions-compose-jetpack", version.ref = "decompose" }
 #decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose" }
@@ -77,9 +83,8 @@ kodein-core = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
 # Logging
 kotlinLogging-core = { module = "io.github.oshai:kotlin-logging", version.ref = "kotlinLogging" }
 
-## Oher
+# Oher
 #serial-usb = { module = "com.github.mik3y:usb-serial-for-android", version.ref = "serial-usb" }
 #multiplatformSettings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
 #multiplatformSettings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
-
