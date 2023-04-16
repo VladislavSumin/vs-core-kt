@@ -1,5 +1,6 @@
 package ru.vs.build_logic.utils
 
+import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.kotlin.dsl.register
@@ -16,11 +17,18 @@ fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: 
             }
             archiveBaseName.set(jarName)
 
-            val dependencies = main.compileDependencyFiles.map { project.zipTree(it) }
+            val dependencies = main.runtimeDependencyFiles.map { project.zipTree(it) }
             from(main.output.classesDirs, dependencies)
 
             exclude("META-INF/versions/**")
             exclude("META-INF/*.kotlin_module")
+        }
+
+        project.tasks.register<JavaExec>("runJvm${flavor.capitalized()}") {
+            group = "application"
+            getMainClass().set(mainClass)
+            classpath = main.output.classesDirs
+            classpath += main.runtimeDependencyFiles
         }
     }
 }
