@@ -12,7 +12,16 @@ kotlin {
     sourceSets {
         named("commonMain") {
             dependencies {
-                api(coreLibs.kotlinLogging.core)
+                api(coreLibs.logging.kotlinLogging.core)
+            }
+        }
+
+        named("jvmMain") {
+            dependencies {
+                api(coreLibs.logging.log4j.api)
+                api(coreLibs.logging.log4j.core)
+                api(coreLibs.logging.log4j.slf4j)
+                api(coreLibs.logging.slf4j)
             }
         }
     }
