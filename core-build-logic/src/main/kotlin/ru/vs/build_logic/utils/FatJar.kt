@@ -29,6 +29,8 @@ fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: 
             from(main.output.classesDirs, dependencies)
 
             exclude("META-INF/LICENSE")
+            exclude("META-INF/DEPENDENCIES")
+            exclude("META-INF/NOTICE")
             exclude("META-INF/versions/**")
             exclude("META-INF/*.kotlin_module")
         }
