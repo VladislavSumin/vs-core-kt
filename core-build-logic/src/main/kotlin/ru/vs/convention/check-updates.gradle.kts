@@ -1,5 +1,9 @@
 package ru.vs.convention
 
+import com.github.benmanes.gradle.versions.reporter.result.Result
+import ru.vs.build_logic.configuration
+import ru.vs.build_logic.github.GithubActionLogger
+
 plugins {
     id("com.github.ben-manes.versions")
 }
@@ -13,5 +17,17 @@ tasks.dependencyUpdates.configure {
     }
     rejectVersionIf {
         isNonStable(candidate.version) && !isNonStable(currentVersion)
+    }
+
+    // Setup special logging format for GitHub
+    // library updates will be print as waring in GutHub Action build
+    if (project.configuration.ci.isGithubCi) {
+        outputFormatter = closureOf<Result> {
+            outdated.dependencies.forEach {
+                GithubActionLogger.w(
+                    "Library outdated: ${it.group}:${it.name} [${it.version} -> ${it.available.milestone}]"
+                )
+            }
+        }
     }
 }
