@@ -6,6 +6,14 @@ import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
 
+/**
+ * Creates tasks buildFarJar[flavor] and runJvm[flavor] for current [KotlinJvmTarget]
+ * Jar file will be stored at build/libs/[jarName].jar
+ *
+ * @param mainClass - main class for store in manifest inside jar and for running with jvmRun[flavor]
+ * @param flavor - flavor name (default is main)
+ * @param jarName - name for jar archive
+ */
 fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: String = "${project.name}-fat") {
     this.compilations.apply {
         val main = getByName(flavor)
@@ -20,6 +28,7 @@ fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: 
             val dependencies = main.runtimeDependencyFiles.map { project.zipTree(it) }
             from(main.output.classesDirs, dependencies)
 
+            exclude("META-INF/LICENSE")
             exclude("META-INF/versions/**")
             exclude("META-INF/*.kotlin_module")
         }
