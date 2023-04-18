@@ -1,6 +1,6 @@
 package ru.vs.convention.android
 
-import ru.vs.build_logic.configuration
+import ru.vs.build_logic.coreConfiguration
 import ru.vs.build_logic.utils.android
 import ru.vs.build_logic.utils.kotlinOptions
 
@@ -11,6 +11,6 @@ plugins {
 
 android {
     kotlinOptions {
-        jvmTarget = project.configuration.jvmVersion
+        jvmTarget = project.coreConfiguration.jvmVersion
     }
 }

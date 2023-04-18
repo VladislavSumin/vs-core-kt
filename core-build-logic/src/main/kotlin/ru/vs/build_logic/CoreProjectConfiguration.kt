@@ -6,7 +6,7 @@ import org.gradle.kotlin.dsl.findByType
 import ru.vs.build_logic.utils.booleanProperty
 import ru.vs.build_logic.utils.stringProperty
 
-abstract class ProjectConfiguration constructor(private val project: Project) {
+abstract class CoreProjectConfiguration constructor(private val project: Project) {
     val jvmVersion = project.stringProperty("ru.vs.core.jvmVersion", "17")
     val ci = CI()
 
@@ -16,5 +16,5 @@ abstract class ProjectConfiguration constructor(private val project: Project) {
     }
 }
 
-val Project.configuration: ProjectConfiguration
-    get() = extensions.findByType() ?: extensions.create(ProjectConfiguration::class.java.simpleName)
+val Project.coreConfiguration: CoreProjectConfiguration
+    get() = extensions.findByType() ?: extensions.create(CoreProjectConfiguration::class.java.simpleName)

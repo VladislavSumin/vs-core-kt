@@ -28,4 +28,5 @@ dependencies {
     api(coreLibs.gradlePlugins.android)
     api(coreLibs.gradlePlugins.checkUpdates)
     api(coreLibs.gradlePlugins.detekt)
+    api(coreLibs.gradlePlugins.buildConfig)
 }

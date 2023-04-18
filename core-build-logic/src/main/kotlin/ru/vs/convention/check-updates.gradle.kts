@@ -1,7 +1,7 @@
 package ru.vs.convention
 
 import com.github.benmanes.gradle.versions.reporter.result.Result
-import ru.vs.build_logic.configuration
+import ru.vs.build_logic.coreConfiguration
 import ru.vs.build_logic.github.GithubActionLogger
 
 plugins {
@@ -21,7 +21,7 @@ tasks.dependencyUpdates.configure {
 
     // Setup special logging format for GitHub
     // library updates will be print as waring in GutHub Action build
-    if (project.configuration.ci.isGithubCi) {
+    if (project.coreConfiguration.ci.isGithubCi) {
         outputFormatter = closureOf<Result> {
             outdated.dependencies.forEach {
                 GithubActionLogger.w(

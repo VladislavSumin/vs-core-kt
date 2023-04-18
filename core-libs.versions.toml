@@ -18,6 +18,7 @@ ktor = "2.2.4"
 gradlePlugins-android = "7.4.1" # last version supported by idea comunity 2022.3.3
 gradlePlugins-checkUpdates = "0.46.0"
 gradlePlugins-detekt = "1.21.0"
+gradlePlugins-buildConfig = "3.0.3"
 
 
 [libraries]
@@ -32,6 +33,7 @@ gradlePlugins-kotlin-core = { module = "org.jetbrains.kotlin:kotlin-gradle-plugi
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-android" }
 gradlePlugins-checkUpdates = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-checkUpdates" }
 gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "gradlePlugins-detekt" }
+gradlePlugins-buildConfig = { module = "com.github.gmazzo:gradle-buildconfig-plugin", version.ref = "gradlePlugins-buildConfig" }
 
 # Kotlin
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
