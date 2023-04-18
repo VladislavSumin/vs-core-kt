@@ -6,12 +6,12 @@ kotlin-core = "1.8.20"
 kotlin-coroutines = "1.7.0-Beta"
 
 # Logging
-logging-log4j = "2.17.1"
-logging-slf4j = "1.7.35"
-logging-kotlinLogging = "4.0.0-beta-22"
+logging-log4j = "2.20.0"
+logging-slf4j = "1.7.36"
+logging-kotlinLogging = "4.0.0-beta-28"
 
 # Other
-kodein = "7.18.0"
+kodein = "7.20.1"
 ktor = "2.2.4"
 
 # Plugins
