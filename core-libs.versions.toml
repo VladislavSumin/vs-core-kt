@@ -10,6 +10,9 @@ android-core = "1.7.0"
 android-activity-compose = "1.7.1"
 android-compose-compiler = "1.4.6"
 
+# Compose
+jb-compose = "1.4.0"
+decompose = "2.0.0-compose-experimental-alpha-02"
 
 # Logging
 logging-log4j = "2.20.0"
@@ -19,7 +22,6 @@ logging-kotlinLogging = "4.0.0-beta-28"
 # Other
 kodein = "7.20.1"
 ktor = "2.2.4"
-jb-compose = "1.4.0"
 
 # Plugins
 gradlePlugins-android = "7.4.1" # last version supported by idea comunity 2022.3.3
@@ -60,6 +62,10 @@ android-core = { module = "androidx.core:core-ktx", version.ref = "android-core"
 android-activity = { module = "androidx.activity:activity-ktx", version.ref = "android-core" }
 android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity-compose" }
 
+# Decompose
+decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose" }
+decompose-android = { module = "com.arkivanov.decompose:extensions-android", version.ref = "decompose" }
 
 # Logging
 logging-kotlinLogging-core = { module = "io.github.oshai:kotlin-logging", version.ref = "logging-kotlinLogging" }
