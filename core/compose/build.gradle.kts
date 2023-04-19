@@ -9,7 +9,9 @@ plugins {
     // id("ru.vs.convention.kmp.windows") compose (for desktop) don't support windows now
     // id("ru.vs.convention.kmp.linux") compose (for desktop) don't support linux now
     id("ru.vs.convention.kmp.macos")
-    id("ru.vs.convention.kmp.wasm")
+
+    // KMM Test library don't support wasm now
+    // id("ru.vs.convention.kmp.wasm")
 
     id("org.jetbrains.compose")
 }
