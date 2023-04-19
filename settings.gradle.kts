@@ -4,9 +4,12 @@ pluginManagement {
     includeBuild("core-build-logic")
 
     repositories {
+        mavenLocal()
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
     }
 }
 
@@ -14,8 +17,11 @@ dependencyResolutionManagement {
     // KMP ios add custom repositories
     // repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
     }
 
     versionCatalogs {
