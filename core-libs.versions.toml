@@ -5,6 +5,9 @@ vs-core = "0.1.0"
 kotlin-core = "1.8.20"
 kotlin-coroutines = "1.7.0-Beta"
 
+# Android
+android-core = "1.7.0"
+
 # Logging
 logging-log4j = "2.20.0"
 logging-slf4j = "1.7.36"
@@ -44,6 +47,11 @@ ktor-server-cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
 
 # Kodein
 kodein-core = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
+kodein-android = { module = "org.kodein.di:kodein-di-framework-android-x", version.ref = "kodein" }
+
+# Android
+android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
+android-activity = { module = "androidx.activity:activity-ktx", version.ref = "android-core" }
 
 # Logging
 logging-kotlinLogging-core = { module = "io.github.oshai:kotlin-logging", version.ref = "logging-kotlinLogging" }
