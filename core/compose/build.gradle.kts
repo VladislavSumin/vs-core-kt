@@ -39,7 +39,7 @@ kotlin {
         }
         named("androidMain") {
             dependencies {
-//                api(coreLibs.android.activity.compose)
+                api(coreLibs.android.activity.compose)
             }
         }
     }

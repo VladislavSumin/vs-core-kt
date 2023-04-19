@@ -7,6 +7,9 @@ kotlin-coroutines = "1.7.0-Beta"
 
 # Android
 android-core = "1.7.0"
+android-activity-compose = "1.7.1"
+android-compose-compiler = "1.4.6"
+
 
 # Logging
 logging-log4j = "2.20.0"
@@ -55,6 +58,8 @@ kodein-android = { module = "org.kodein.di:kodein-di-framework-android-x", versi
 # Android
 android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
 android-activity = { module = "androidx.activity:activity-ktx", version.ref = "android-core" }
+android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity-compose" }
+
 
 # Logging
 logging-kotlinLogging-core = { module = "io.github.oshai:kotlin-logging", version.ref = "logging-kotlinLogging" }
