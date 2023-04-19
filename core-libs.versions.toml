@@ -16,6 +16,7 @@ logging-kotlinLogging = "4.0.0-beta-28"
 # Other
 kodein = "7.20.1"
 ktor = "2.2.4"
+jb-compose = "1.4.0"
 
 # Plugins
 gradlePlugins-android = "7.4.1" # last version supported by idea comunity 2022.3.3
@@ -26,6 +27,7 @@ gradlePlugins-buildConfig = "3.0.3"
 
 [libraries]
 # Core
+vs-core-compose = { module = "ru.vs.core:compose", version.ref = "vs-core" }
 vs-core-coroutines = { module = "ru.vs.core:coroutines", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
@@ -34,6 +36,7 @@ vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
 # Plugins
 gradlePlugins-kotlin-core = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-core" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-android" }
+gradlePlugins-jb-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jb-compose" }
 gradlePlugins-checkUpdates = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-checkUpdates" }
 gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "gradlePlugins-detekt" }
 gradlePlugins-buildConfig = { module = "com.github.gmazzo:gradle-buildconfig-plugin", version.ref = "gradlePlugins-buildConfig" }

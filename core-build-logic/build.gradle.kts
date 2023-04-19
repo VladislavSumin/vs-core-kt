@@ -26,6 +26,7 @@ dependencies {
 
     api(coreLibs.gradlePlugins.kotlin.core)
     api(coreLibs.gradlePlugins.android)
+    api(coreLibs.gradlePlugins.jb.compose)
     api(coreLibs.gradlePlugins.checkUpdates)
     api(coreLibs.gradlePlugins.detekt)
     api(coreLibs.gradlePlugins.buildConfig)
