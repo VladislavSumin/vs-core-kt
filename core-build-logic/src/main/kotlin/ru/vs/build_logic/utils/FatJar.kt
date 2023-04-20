@@ -25,7 +25,7 @@ fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: 
             }
             archiveBaseName.set(jarName)
 
-            val dependencies = main.runtimeDependencyFiles.map { project.zipTree(it) }
+            val dependencies = main.runtimeDependencyFiles.map { if (it.isDirectory) it else project.zipTree(it) }
             from(main.output.classesDirs, dependencies)
 
             exclude("META-INF/LICENSE")
