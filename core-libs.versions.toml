@@ -21,7 +21,7 @@ logging-kotlinLogging = "4.0.0-beta-28"
 
 # Other
 kodein = "7.20.1"
-ktor = "2.2.4"
+ktor = "2.3.0"
 
 # Plugins
 gradlePlugins-android = "7.4.1" # last version supported by idea comunity 2022.3.3
