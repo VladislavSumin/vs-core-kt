@@ -3,8 +3,10 @@ package ru.vs.build_logic.utils
 import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.configurationcache.extensions.capitalized
+import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
+import org.jetbrains.kotlin.gradle.utils.provider
 
 /**
  * Creates tasks buildFarJar[flavor] and runJvm[flavor] for current [KotlinJvmTarget]
@@ -25,8 +27,18 @@ fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: 
             }
             archiveBaseName.set(jarName)
 
-            val dependencies = main.runtimeDependencyFiles.map { if (it.isDirectory) it else project.zipTree(it) }
-            from(main.output.classesDirs, dependencies)
+            from(main.output.classesDirs)
+
+            // doFirst is workaround
+            // from can`t accept provider as argument, see https://github.com/gradle/gradle/issues/22637
+            // we need to calculate dependencies before tusk run (not at configuration time)
+            doFirst {
+                val dependencies = main.runtimeDependencyFiles.map {
+                    check(it.exists()) { "${it.absolutePath} not exists" }
+                    if (it.isDirectory) it else project.zipTree(it)
+                }
+                from(dependencies)
+            }
 
             exclude("META-INF/LICENSE")
             exclude("META-INF/DEPENDENCIES")

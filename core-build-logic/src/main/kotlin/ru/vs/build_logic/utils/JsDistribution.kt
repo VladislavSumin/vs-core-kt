@@ -26,17 +26,18 @@ fun Project.configureJsDistribution(
         .resolve("jsDistributions")
         .resolve(configurationName)
 
+    val buildTask = tasks.named(jsBuildTask)
+
     val assembleTask = tasks.register<Copy>("assemble${configurationName.capitalized()}") {
-        val buildTask = tasks.named(jsBuildTask)
         from(buildTask.map { it.outputs.files.files.single() })
         into(outputDir.resolve(additionalDirs))
         dependsOn(buildTask)
     }
 
+
     artifacts {
-        add(
-            configurationName,
-            assembleTask.map { outputDir }
-        )
+        add(configurationName, outputDir) {
+            builtBy(assembleTask)
+        }
     }
 }
