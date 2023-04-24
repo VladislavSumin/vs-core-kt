@@ -3,7 +3,7 @@ vs-core = "0.1.0"
 
 # Kotlin
 kotlin-core = "1.8.20"
-kotlin-coroutines = "1.7.0-Beta"
+kotlin-coroutines = "1.7.0-RC"
 
 # Android
 android-core = "1.7.0"
