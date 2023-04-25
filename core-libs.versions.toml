@@ -3,7 +3,9 @@ vs-core = "0.1.0"
 
 # Kotlin
 kotlin-core = "1.8.20"
+ksp = "1.8.20-1.0.11"
 kotlin-coroutines = "1.7.0-RC"
+kotlin-serialization = "1.5.0"
 
 # Android
 android-core = "1.7.0"
@@ -41,6 +43,8 @@ vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
 
 # Plugins
 gradlePlugins-kotlin-core = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-core" }
+gradlePlugins-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin-core" }
+gradlePlugins-ksp = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-android" }
 gradlePlugins-jb-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jb-compose" }
 gradlePlugins-checkUpdates = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-checkUpdates" }
@@ -49,6 +53,8 @@ gradlePlugins-buildConfig = { module = "com.github.gmazzo:gradle-buildconfig-plu
 
 # Kotlin
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlin-serialization" }
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 
 # Ktor
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
@@ -74,6 +80,9 @@ logging-log4j-api = { module = "org.apache.logging.log4j:log4j-api", version.ref
 logging-log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "logging-log4j" }
 logging-log4j-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "logging-log4j" }
 logging-slf4j = { module = "org.slf4j:slf4j-api", version.ref = "logging-slf4j" }
+
+# Code generation
+ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 
 # Oher
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }

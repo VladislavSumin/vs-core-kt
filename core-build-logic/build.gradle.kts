@@ -25,6 +25,8 @@ dependencies {
     api(files(coreLibs.javaClass.superclass.protectionDomain.codeSource.location))
 
     api(coreLibs.gradlePlugins.kotlin.core)
+    api(coreLibs.gradlePlugins.kotlin.serialization)
+    api(coreLibs.gradlePlugins.ksp)
     api(coreLibs.gradlePlugins.android)
     api(coreLibs.gradlePlugins.jb.compose)
     api(coreLibs.gradlePlugins.checkUpdates)
