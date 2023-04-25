@@ -34,6 +34,7 @@ gradlePlugins-buildConfig = "3.0.3"
 # Core
 vs-core-compose = { module = "ru.vs.core:compose", version.ref = "vs-core" }
 vs-core-coroutines = { module = "ru.vs.core:coroutines", version.ref = "vs-core" }
+vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
