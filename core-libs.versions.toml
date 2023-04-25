@@ -24,6 +24,15 @@ logging-kotlinLogging = "4.0.0-beta-28"
 # Other
 kodein = "7.20.1"
 ktor = "2.3.0"
+kotlinpoet = "1.13.0"
+
+# Testing
+testing-junit5-core = "5.8.2"
+testing-junit5-platformSuite = "1.8.2"
+# TODO заменить на mockk
+testing-mockito-core = "4.3.1"
+testing-mockito-kotlin = "4.0.0"
+testing-turbine = "0.7.0"
 
 # Plugins
 gradlePlugins-android = "7.4.1" # last version supported by idea comunity 2022.3.3
@@ -40,6 +49,7 @@ vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
+vs-core-utils = { module = "ru.vs.core:utils", version.ref = "vs-core" }
 
 # Plugins
 gradlePlugins-kotlin-core = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-core" }
@@ -53,6 +63,7 @@ gradlePlugins-buildConfig = { module = "com.github.gmazzo:gradle-buildconfig-plu
 
 # Kotlin
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 kotlin-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlin-serialization" }
 kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 
@@ -83,6 +94,18 @@ logging-slf4j = { module = "org.slf4j:slf4j-api", version.ref = "logging-slf4j" 
 
 # Code generation
 ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
+kotlinpoet-core = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
+kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinpoet" }
 
 # Oher
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
+
+# Testing
+testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }
+testing-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "testing-junit5-core" }
+testing-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "testing-junit5-core" }
+testing-jupiter-platformSuite = { module = "org.junit.platform:junit-platform-suite", version.ref = "testing-junit5-platformSuite" }
+testing-mockito-core = { module = "org.mockito:mockito-core", version.ref = "testing-mockito-core" }
+testing-mockito-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "testing-mockito-core" }
+testing-mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "testing-mockito-kotlin" }
+testing-turbine = { module = "app.cash.turbine:turbine", version.ref = "testing-turbine" }
