@@ -32,4 +32,5 @@ dependencies {
     api(coreLibs.gradlePlugins.checkUpdates)
     api(coreLibs.gradlePlugins.detekt)
     api(coreLibs.gradlePlugins.buildConfig)
+    api(coreLibs.gradlePlugins.sqldelight)
 }

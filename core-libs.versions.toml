@@ -25,6 +25,8 @@ logging-kotlinLogging = "4.0.0-beta-28"
 kodein = "7.20.1"
 ktor = "2.3.0"
 kotlinpoet = "1.13.0"
+sqldelight = "2.0.0-alpha05"
+
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -60,6 +62,7 @@ gradlePlugins-jb-compose = { module = "org.jetbrains.compose:compose-gradle-plug
 gradlePlugins-checkUpdates = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-checkUpdates" }
 gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "gradlePlugins-detekt" }
 gradlePlugins-buildConfig = { module = "com.github.gmazzo:gradle-buildconfig-plugin", version.ref = "gradlePlugins-buildConfig" }
+gradlePlugins-sqldelight = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqldelight" }
 
 # Kotlin
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -89,6 +92,11 @@ android-activity-compose = { module = "androidx.activity:activity-compose", vers
 decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose" }
 decompose-android = { module = "com.arkivanov.decompose:extensions-android", version.ref = "decompose" }
+
+# Sqldelight
+sqldelight-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 
 # Logging
 logging-kotlinLogging-core = { module = "io.github.oshai:kotlin-logging", version.ref = "logging-kotlinLogging" }
