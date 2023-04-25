@@ -13,6 +13,10 @@ plugins {
     id("org.jetbrains.compose")
 }
 
+android {
+    namespace = "ru.vs.core.decompose"
+}
+
 kotlin {
     sourceSets {
         named("commonMain") {
