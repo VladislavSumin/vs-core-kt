@@ -26,6 +26,7 @@ kodein = "7.20.1"
 ktor = "2.3.0"
 kotlinpoet = "1.13.0"
 sqldelight = "2.0.0-alpha05"
+mvikotlin = "3.2.0"
 
 
 # Testing
@@ -51,6 +52,7 @@ vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
+vs-core-mvi = { module = "ru.vs.core:mvi", version.ref = "vs-core" }
 vs-core-utils = { module = "ru.vs.core:utils", version.ref = "vs-core" }
 
 # Plugins
@@ -110,7 +112,12 @@ ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = 
 kotlinpoet-core = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinpoet" }
 
-# Oher
+# MVI Kotlin
+mvikotlin-core = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
+mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
+mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
+
+# Other
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
 
 # Testing
