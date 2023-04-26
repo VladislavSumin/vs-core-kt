@@ -21,12 +21,11 @@ kotlin {
     sourceSets {
         named("commonMain") {
             dependencies {
+                implementation(projects.core.compose)
+                implementation(projects.core.di)
+
                 api(coreLibs.decompose.core)
                 api(coreLibs.decompose.jetbrains)
-
-                // api(coreLibs.kodein.compose)
-
-                implementation(projects.core.compose)
             }
         }
         named("androidMain") {

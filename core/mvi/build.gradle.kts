@@ -21,6 +21,8 @@ kotlin {
     sourceSets {
         named("commonMain") {
             dependencies {
+                implementation(projects.core.di)
+
                 api(coreLibs.mvikotlin.core)
                 api(coreLibs.mvikotlin.main)
                 api(coreLibs.mvikotlin.extensions.coroutines)
