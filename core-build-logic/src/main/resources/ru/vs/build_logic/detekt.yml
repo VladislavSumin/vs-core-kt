@@ -8,6 +8,7 @@ complexity:
     active: false
   TooManyFunctions:
     active: false
+
 naming:
   PackageNaming:
     packagePattern: '[a-z]+(\.[a-z][A-Za-z0-9_]*)*'
@@ -24,3 +25,6 @@ style:
     maxLineLength: 140
   ReturnCount:
     active: false
+  UnusedPrivateMember:
+    ignoreAnnotated:
+      - 'Preview'
