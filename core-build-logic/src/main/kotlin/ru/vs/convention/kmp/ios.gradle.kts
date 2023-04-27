@@ -1,7 +1,7 @@
 package ru.vs.convention.kmp
 
 plugins {
-    id("ru.vs.convention.kmp.common")
+    id("ru.vs.convention.kmp.native")
 }
 
 kotlin {
@@ -11,10 +11,10 @@ kotlin {
     // iosSimulatorArm64("uikitSimulatorArm64")
 
     sourceSets {
-        val commonMain by getting {}
+        val nativeMain by getting {}
 
         val uikitMain by creating {
-            dependsOn(commonMain)
+            dependsOn(nativeMain)
         }
 
         val uikitX64Main by getting {

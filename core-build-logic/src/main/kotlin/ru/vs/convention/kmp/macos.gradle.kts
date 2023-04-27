@@ -1,7 +1,7 @@
 package ru.vs.convention.kmp
 
 plugins {
-    id("ru.vs.convention.kmp.common")
+    id("ru.vs.convention.kmp.native")
 }
 
 kotlin {
@@ -9,10 +9,10 @@ kotlin {
     macosArm64()
 
     sourceSets {
-        val commonMain by getting {}
+        val nativeMain by getting {}
 
         val macosMain by creating {
-            dependsOn(commonMain)
+            dependsOn(nativeMain)
         }
 
         val macosX64Main by getting {
