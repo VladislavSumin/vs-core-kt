@@ -33,6 +33,7 @@ kotlin {
         named("jvmMain") {
             dependencies {
                 api(compose.desktop.currentOs)
+                implementation(coreLibs.kotlin.coroutines.swing)
             }
         }
         named("androidMain") {
