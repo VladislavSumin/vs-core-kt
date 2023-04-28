@@ -48,6 +48,7 @@ gradlePlugins-buildConfig = "3.0.3"
 # Core
 vs-core-compose = { module = "ru.vs.core:compose", version.ref = "vs-core" }
 vs-core-coroutines = { module = "ru.vs.core:coroutines", version.ref = "vs-core" }
+vs-core-database = { module = "ru.vs.core:database", version.ref = "vs-core" }
 vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
@@ -100,6 +101,7 @@ decompose-android = { module = "com.arkivanov.decompose:extensions-android", ver
 sqldelight-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight-sqljs = { module = "app.cash.sqldelight:sqljs-driver", version.ref = "sqldelight" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 
 # Logging

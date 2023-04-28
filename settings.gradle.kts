@@ -31,6 +31,7 @@ dependencyResolutionManagement {
 
 include(":core:compose")
 include(":core:coroutines")
+include(":core:database")
 include(":core:decompose")
 include(":core:di")
 include(":core:ktor-server")
