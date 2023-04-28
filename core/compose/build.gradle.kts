@@ -43,3 +43,10 @@ kotlin {
         }
     }
 }
+
+configurations.all {
+    // We add @Preview annotation manually for all platform
+    // This need to use @Preview in common code
+    // For avoid class duplication exclude original dependency
+    exclude("org.jetbrains.compose.ui", "ui-tooling-preview-desktop")
+}
