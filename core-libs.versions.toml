@@ -54,6 +54,8 @@ vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
 vs-core-mvi = { module = "ru.vs.core:mvi", version.ref = "vs-core" }
+vs-core-serialization-core = { module = "ru.vs.core.serialization:core", version.ref = "vs-core" }
+vs-core-serialization-json = { module = "ru.vs.core.serialization:json", version.ref = "vs-core" }
 vs-core-utils = { module = "ru.vs.core:utils", version.ref = "vs-core" }
 
 # Plugins
