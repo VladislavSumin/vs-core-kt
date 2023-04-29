@@ -10,7 +10,7 @@ allprojects {
         path += project.name
         project = project.parent
     }
-    val subpackage = path.joinToString(separator = ".")
+    val subpackage = path.reversed().joinToString(separator = ".")
 
     group = if (subpackage.isBlank()) "ru.vs"
     else "ru.vs.$subpackage"
