@@ -29,6 +29,7 @@ ktor = "2.3.0"
 kotlinpoet = "1.13.1"
 sqldelight = "2.0.0-alpha05"
 mvikotlin = "3.2.0"
+moko-resources = "0.21.2"
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -72,6 +73,7 @@ gradlePlugins-checkUpdates = { module = "com.github.ben-manes:gradle-versions-pl
 gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "gradlePlugins-detekt" }
 gradlePlugins-buildConfig = { module = "com.github.gmazzo:gradle-buildconfig-plugin", version.ref = "gradlePlugins-buildConfig" }
 gradlePlugins-sqldelight = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqldelight" }
+gradlePlugins-moko-resources = { module = "dev.icerock.moko:resources-generator", version.ref = "moko-resources" }
 
 # Kotlin
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -134,6 +136,8 @@ mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-
 
 # Other
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
+moko-resources-core = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
 
 # Testing
 testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }
