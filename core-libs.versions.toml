@@ -6,6 +6,7 @@ kotlin-core = "1.8.20"
 ksp = "1.8.20-1.0.11"
 kotlin-coroutines = "1.7.0-RC"
 kotlin-serialization = "1.5.0"
+kotlin-atomicfu = "0.20.2"
 
 # Android
 android-core = "1.7.0"
@@ -63,6 +64,7 @@ vs-core-utils = { module = "ru.vs.core:utils", version.ref = "vs-core" }
 # Plugins
 gradlePlugins-kotlin-core = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-core" }
 gradlePlugins-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin-core" }
+gradlePlugins-kotlin-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "kotlin-atomicfu" }
 gradlePlugins-ksp = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-android" }
 gradlePlugins-jb-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jb-compose" }
@@ -131,6 +133,7 @@ mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-
 
 # Other
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
+kotlin-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "kotlin-atomicfu" }
 
 # Testing
 testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }

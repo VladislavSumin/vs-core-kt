@@ -9,5 +9,5 @@ import ru.vs.core.ktor_client.service.createHttpClientFactory
 
 fun Modules.coreKtorClient() = DI.Module("core-ktor-client") {
     bindSingleton { createHttpClientFactory() }
-    bindSingleton { i<HttpClientFactory>().createHttpClient() }
+    bindSingleton { i<HttpClientFactory>().createHttpClientDefault() }
 }
