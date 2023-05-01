@@ -9,7 +9,8 @@ kotlin-serialization = "1.5.0"
 kotlin-atomicfu = "0.20.2"
 
 # Android
-android-core = "1.7.0"
+android-core = "1.9.0"
+android-activity = "1.7.1"
 android-activity-compose = "1.7.1"
 android-compose-compiler = "1.4.6"
 
@@ -25,10 +26,9 @@ logging-kotlinLogging = "4.0.0-beta-28"
 # Other
 kodein = "7.20.1"
 ktor = "2.3.0"
-kotlinpoet = "1.13.0"
+kotlinpoet = "1.13.1"
 sqldelight = "2.0.0-alpha05"
 mvikotlin = "3.2.0"
-
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -36,7 +36,7 @@ testing-junit5-platformSuite = "1.8.2"
 # TODO заменить на mockk
 testing-mockito-core = "4.3.1"
 testing-mockito-kotlin = "4.0.0"
-testing-turbine = "0.7.0"
+testing-turbine = "0.12.3"
 
 # Plugins
 gradlePlugins-android = "7.4.1" # last version supported by idea comunity 2022.3.3
@@ -100,7 +100,7 @@ kodein-android = { module = "org.kodein.di:kodein-di-framework-android-x", versi
 
 # Android
 android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
-android-activity = { module = "androidx.activity:activity-ktx", version.ref = "android-core" }
+android-activity = { module = "androidx.activity:activity-ktx", version.ref = "android-activity" }
 android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity-compose" }
 
 # Decompose
