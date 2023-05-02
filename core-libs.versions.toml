@@ -61,6 +61,7 @@ vs-core-mvi = { module = "ru.vs.core:mvi", version.ref = "vs-core" }
 vs-core-serialization-core = { module = "ru.vs.core.serialization:core", version.ref = "vs-core" }
 vs-core-serialization-json = { module = "ru.vs.core.serialization:json", version.ref = "vs-core" }
 vs-core-uikit-dropdownMenu = { module = "ru.vs.core.uikit:dropdown-menu", version.ref = "vs-core" }
+vs-core-uikit-localConfiguration = { module = "ru.vs.core.uikit:local-configuration", version.ref = "vs-core" }
 vs-core-utils = { module = "ru.vs.core:utils", version.ref = "vs-core" }
 
 # Plugins
