@@ -1,5 +1,6 @@
 package ru.vs.build_logic.utils
 
+import org.gradle.api.file.DuplicatesStrategy
 import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.configurationcache.extensions.capitalized
@@ -15,19 +16,29 @@ import org.jetbrains.kotlin.gradle.utils.provider
  * @param mainClass - main class for store in manifest inside jar and for running with jvmRun[flavor]
  * @param flavor - flavor name (default is main)
  * @param jarName - name for jar archive
+ * @param duplicatesStrategy - strategy for copy spec, sometime we may change it for some reason
  */
-fun KotlinJvmTarget.fatJar(mainClass: String, flavor: String = "main", jarName: String = "${project.name}-fat") {
+fun KotlinJvmTarget.fatJar(
+    mainClass: String,
+    flavor: String = "main",
+    jarName: String = "${project.name}-fat",
+    duplicatesStrategy: DuplicatesStrategy = DuplicatesStrategy.FAIL,
+) {
     this.compilations.apply {
         val main = getByName(flavor)
         // See https://stackoverflow.com/questions/57168853/create-fat-jar-from-kotlin-multiplatform-project
         project.tasks.register<Jar>("buildFatJar${flavor.capitalized()}") {
             group = "application"
+
             manifest {
                 attributes["Main-Class"] = mainClass
             }
+
             archiveBaseName.set(jarName)
 
             from(main.output.classesDirs)
+
+            this.duplicatesStrategy = duplicatesStrategy
 
             // doFirst is workaround
             // from can`t accept provider as argument, see https://github.com/gradle/gradle/issues/22637
