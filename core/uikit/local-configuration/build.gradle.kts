@@ -15,7 +15,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.vs.core.uikit.dropdown_menu"
+    namespace = "ru.vs.core.uikit.local_configuration"
 }
 
 kotlin {
