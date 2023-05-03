@@ -31,6 +31,7 @@ sqldelight = "2.0.0-alpha05"
 mvikotlin = "3.2.0"
 moko-resources = "0.21.2"
 essenty = "1.1.0"
+multiplatformSettings = "1.0.0"
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -54,6 +55,7 @@ vs-core-coroutines = { module = "ru.vs.core:coroutines", version.ref = "vs-core"
 vs-core-database = { module = "ru.vs.core:database", version.ref = "vs-core" }
 vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
+vs-core-keyValueStorage = { module = "ru.vs.core:key-value-storage", version.ref = "vs-core" }
 vs-core-ktor-client = { module = "ru.vs.core:ktor-client", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
@@ -143,6 +145,8 @@ mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
 moko-resources-core = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
+multiplatformSettings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
+multiplatformSettings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
 
 # Testing
 testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }
