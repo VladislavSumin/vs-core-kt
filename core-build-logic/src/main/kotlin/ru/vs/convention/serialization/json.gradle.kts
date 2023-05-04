@@ -10,13 +10,15 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-val coreLibs = rootProject.the<LibrariesForCoreLibs>()
+if (project.name != "gradle-kotlin-dsl-accessors") {
+    val coreLibs = rootProject.the<LibrariesForCoreLibs>()
 
-kotlin {
-    sourceSets {
-        named("commonMain") {
-            dependencies {
-                implementation(coreLibs.vs.core.serialization.json)
+    kotlin {
+        sourceSets {
+            named("commonMain") {
+                dependencies {
+                    implementation(coreLibs.vs.core.serialization.json)
+                }
             }
         }
     }
