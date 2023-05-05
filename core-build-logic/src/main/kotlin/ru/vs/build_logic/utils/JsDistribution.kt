@@ -34,7 +34,6 @@ fun Project.configureJsDistribution(
         dependsOn(buildTask)
     }
 
-
     artifacts {
         add(configurationName, outputDir) {
             builtBy(assembleTask)

@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 plugins {
     id("ru.vs.convention.check-updates")
 }
@@ -20,3 +22,12 @@ allprojects {
 allprojects {
     apply { plugin("ru.vs.convention.analyze.detekt") }
 }
+
+// Add additional configuration to check core-build-logic
+val detektBuildLogic = tasks.register<Detekt>("detektBuildLogic") {
+    source = fileTree(project.rootDir).matching {
+        include("core-build-logic/src/**/*.kt", "core-build-logic/**/*.gradle.kts")
+        exclude("**/build/**")
+    }
+}
+tasks.named("detekt").configure { dependsOn(detektBuildLogic) }
