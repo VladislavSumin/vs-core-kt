@@ -10,6 +10,7 @@ kotlin {
     iosArm64("uikitArm64")
     // iosSimulatorArm64("uikitSimulatorArm64")
 
+    @Suppress("UnusedPrivateMember")
     sourceSets {
         val nativeMain by getting {}
 

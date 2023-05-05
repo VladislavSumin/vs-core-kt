@@ -10,7 +10,8 @@ import ru.vs.build_logic.utils.stringProperty
  * Project configuration class
  * proxies all external configuration (by properties or by environment variables
  */
-abstract class CoreProjectConfiguration constructor(private val project: Project) {
+@Suppress("UnnecessaryAbstractClass")
+abstract class CoreProjectConfiguration(private val project: Project) {
     val jvmVersion = project.stringProperty("ru.vs.core.jvmVersion", "17")
     val ci = CI()
 

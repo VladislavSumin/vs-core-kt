@@ -9,6 +9,8 @@ plugins {
 }
 
 kotlin {
+
+    @Suppress("UnusedPrivateMember")
     sourceSets {
         val commonMain by getting {}
         val nativeMain by creating {

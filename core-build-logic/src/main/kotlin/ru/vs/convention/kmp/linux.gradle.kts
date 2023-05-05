@@ -8,6 +8,7 @@ kotlin {
     linuxX64()
     // linuxArm64()
 
+    @Suppress("UnusedPrivateMember")
     sourceSets {
         val nativeMain by getting {}
 

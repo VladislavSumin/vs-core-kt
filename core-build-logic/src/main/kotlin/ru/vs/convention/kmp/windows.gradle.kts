@@ -7,6 +7,7 @@ plugins {
 kotlin {
     mingwX64()
 
+    @Suppress("UnusedPrivateMember")
     sourceSets {
         val nativeMain by getting {}
 
