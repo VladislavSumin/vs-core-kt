@@ -56,6 +56,7 @@ vs-core-database = { module = "ru.vs.core:database", version.ref = "vs-core" }
 vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
 vs-core-keyValueStorage = { module = "ru.vs.core:key-value-storage", version.ref = "vs-core" }
+vs-core-ktor-network = { module = "ru.vs.core:ktor-network", version.ref = "vs-core" }
 vs-core-ktor-client = { module = "ru.vs.core:ktor-client", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
@@ -89,6 +90,7 @@ kotlin-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "ko
 
 # Ktor
 ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-network = { module = "io.ktor:ktor-network", version.ref = "ktor" }
 ktor-websockets = { module = "io.ktor:ktor-websockets", version.ref = "ktor" }
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
