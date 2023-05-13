@@ -8,23 +8,29 @@ interface JsonFactory {
     fun createDefault(): Json
 }
 
+/**
+ * @param serializersModulesSet - set of global [SerializersModule], using to create [createDefault] json instance
+ */
 internal class JsonFactoryImpl(
-    // private val serializersModulesSet: Set<SerializersModule>
+    private val serializersModulesSet: Set<SerializersModule>
 ) : JsonFactory {
 
-//    private val mergedModule by lazy {
-//        serializersModulesSet.fold(null as SerializersModule?) { m1, m2 ->
-//            m1?.plus(m2) ?: m2
-//        } ?: SerializersModule { }
-//    }
+    private val mergedModule: SerializersModule by lazy {
+        /**
+         * Concatenate all modules from [serializersModulesSet] into one [SerializersModule]
+         */
+        serializersModulesSet.fold(null as SerializersModule?) { m1, m2 ->
+            m1?.plus(m2) ?: m2
+        } ?: SerializersModule { }
+    }
 
-    override fun createDefault() = Json //{
+    override fun createDefault() = Json {
 //        encodeDefaults = true
 //        isLenient = true
 //        allowSpecialFloatingPointValues = true
 //        allowStructuredMapKeys = true
 //        prettyPrint = true
 //        useArrayPolymorphism = false
-//        serializersModule = mergedModule
-//    }
+        serializersModule = mergedModule
+    }
 }
