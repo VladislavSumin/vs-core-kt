@@ -32,6 +32,7 @@ mvikotlin = "3.2.0"
 moko-resources = "0.21.2"
 essenty = "1.1.0"
 multiplatformSettings = "1.0.0"
+okio = "3.3.0"
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -149,6 +150,7 @@ moko-resources-core = { module = "dev.icerock.moko:resources", version.ref = "mo
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
 multiplatformSettings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
 multiplatformSettings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 
 # Testing
 testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }
