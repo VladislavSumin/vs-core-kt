@@ -1,3 +1,5 @@
+import ru.vs.build_logic.coreConfiguration
+
 plugins {
     id("ru.vs.convention.kmp.all")
 }
@@ -56,7 +58,7 @@ kotlin {
             }
         }
 
-        named("mingwX64Main") {
+        if (project.coreConfiguration.kmp.mingwX64.isEnabled) named("mingwX64Main") {
             dependencies {
                 implementation(coreLibs.ktor.client.winhttp)
             }
