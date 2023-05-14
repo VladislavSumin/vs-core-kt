@@ -3,35 +3,42 @@ package ru.vs.build_logic
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.findByType
-import ru.vs.build_logic.utils.booleanProperty
-import ru.vs.build_logic.utils.stringProperty
+import ru.vs.build_logic.utils.Configuration
+import ru.vs.build_logic.utils.PropertyProvider
 
 /**
  * Project configuration class
  * proxies all external configuration (by properties or by environment variables
  */
 @Suppress("UnnecessaryAbstractClass")
-abstract class CoreProjectConfiguration(private val project: Project) {
-    val jvmVersion = project.stringProperty("ru.vs.core.jvmVersion", "17")
+abstract class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
+    Configuration("ru.vs.core", propertyProvider) {
+
+    val jvmVersion = property("jvmVersion", "17")
 
     val ci = CI()
     val kmp = KMP()
 
-    inner class CI {
-        val isCI = project.booleanProperty("ru.vs.core.ci", false)
-        val isGithubCi = project.booleanProperty("ru.vs.core.ci.github", false)
+    inner class CI : Configuration("ci", this) {
+        val isCI = property("", false)
+        val isGithubCi = property("github", false)
     }
 
-    inner class KMP {
+    inner class KMP : Configuration("kmp", this) {
+        val js = PlatformConfig("js")
         val linuxX64 = PlatformConfig("linuxX64")
         val mingwX64 = PlatformConfig("mingwX64")
 
-        inner class PlatformConfig(private val platformName: String) {
-            val isEnabled = project.booleanProperty("ru.vs.core.kmp.$platformName.enabled", true)
+        inner class PlatformConfig(platformName: String) : Configuration(platformName, this) {
+            val isEnabled = property("enabled", true)
         }
     }
 }
 
 val Project.coreConfiguration: CoreProjectConfiguration
     get() = rootProject.extensions.findByType()
-        ?: rootProject.extensions.create(CoreProjectConfiguration::class.java.simpleName)
+        ?: rootProject.extensions.create(
+            CoreProjectConfiguration::class.java.simpleName,
+            PropertyProvider { project.findProperty(it)?.toString() }
+        )
+

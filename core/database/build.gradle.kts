@@ -1,3 +1,4 @@
+import ru.vs.build_logic.coreConfiguration
 import ru.vs.build_logic.utils.android
 
 plugins {
@@ -32,7 +33,7 @@ kotlin {
                 implementation(coreLibs.sqldelight.native)
             }
         }
-        named("jsMain") {
+        if (project.coreConfiguration.kmp.js.isEnabled) named("jsMain") {
             dependencies {
                 implementation(coreLibs.sqldelight.sqljs)
             }

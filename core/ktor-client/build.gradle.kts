@@ -52,7 +52,7 @@ kotlin {
             }
         }
 
-        named("jsMain") {
+        if (project.coreConfiguration.kmp.js.isEnabled) named("jsMain") {
             dependencies {
                 implementation(coreLibs.ktor.client.js)
             }
