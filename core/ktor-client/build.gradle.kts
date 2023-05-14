@@ -46,7 +46,7 @@ kotlin {
             }
         }
 
-        named("linuxX64Main") {
+        if (project.coreConfiguration.kmp.linuxX64.isEnabled) named("linuxX64Main") {
             dependencies {
                 implementation(coreLibs.ktor.client.cio)
             }

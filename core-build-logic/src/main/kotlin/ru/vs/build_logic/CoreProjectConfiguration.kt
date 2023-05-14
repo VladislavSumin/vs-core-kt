@@ -23,6 +23,7 @@ abstract class CoreProjectConfiguration(private val project: Project) {
     }
 
     inner class KMP {
+        val linuxX64 = PlatformConfig("linuxX64")
         val mingwX64 = PlatformConfig("mingwX64")
 
         inner class PlatformConfig(private val platformName: String) {
