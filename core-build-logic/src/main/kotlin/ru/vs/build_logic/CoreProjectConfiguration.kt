@@ -30,15 +30,26 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
         val linuxX64 = PlatformConfig("linuxX64")
         val mingwX64 = PlatformConfig("mingwX64")
 
+        val macosX64 = PlatformConfig("macosX64")
+        val macosArm64 = PlatformConfig("macosArm64")
+        val macos = MergedPlatformConfig(macosX64, macosArm64)
+
         inner class PlatformConfig(platformName: String) : Configuration(platformName, this) {
             val isEnabled = property("enabled", true)
+        }
+
+        inner class MergedPlatformConfig(vararg platforms: PlatformConfig) {
+            val isEnabled = platforms.any { it.isEnabled }
         }
     }
 }
 
+// We can't use rootProject as holder because when we add plugins to settings.gradle.kts then gradle evaluate this
+// module and evaluate all convention plugin (to generate dsl), but when evaluating for settings we're getting error
+// when trying to resolve rootProject. See https://github.com/gradle/gradle/issues/16532
 val Project.coreConfiguration: CoreProjectConfiguration
-    get() = rootProject.extensions.findByType()
-        ?: rootProject.extensions.create(
+    get() = extensions.findByType()
+        ?: extensions.create(
             CoreProjectConfiguration::class.java.simpleName,
             PropertyProvider { project.findProperty(it)?.toString() }
         )

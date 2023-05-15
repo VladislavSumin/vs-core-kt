@@ -34,7 +34,7 @@ kotlin {
             }
         }
 
-        named("macosMain") {
+        if (project.coreConfiguration.kmp.macos.isEnabled) named("macosMain") {
             dependencies {
                 implementation(coreLibs.ktor.client.cio)
             }
