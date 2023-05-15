@@ -1,6 +1,7 @@
 plugins {
     `kotlin-dsl`
     `maven-publish`
+    `java-gradle-plugin`
 }
 
 group = "ru.vs.core"
@@ -35,4 +36,13 @@ dependencies {
     api(coreLibs.gradlePlugins.buildConfig)
     api(coreLibs.gradlePlugins.sqldelight)
     api(coreLibs.gradlePlugins.moko.resources)
+}
+
+gradlePlugin {
+    plugins {
+        create("settingsStubPlugin") {
+            id = "ru.vs.plugins.settings-stub"
+            implementationClass = "ru.vs.plugins.settings_stub.SettingsStubPlugin"
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package ru.vs.build_logic
 
 import org.gradle.api.Project
+import org.gradle.api.initialization.Settings
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.findByType
 import ru.vs.build_logic.utils.Configuration
@@ -11,7 +12,7 @@ import ru.vs.build_logic.utils.PropertyProvider
  * proxies all external configuration (by properties or by environment variables
  */
 @Suppress("UnnecessaryAbstractClass")
-abstract class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
+open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
     Configuration("ru.vs.core", propertyProvider) {
 
     val jvmVersion = property("jvmVersion", "17")
@@ -42,3 +43,6 @@ val Project.coreConfiguration: CoreProjectConfiguration
             PropertyProvider { project.findProperty(it)?.toString() }
         )
 
+fun Settings.createCoreConfiguration(): CoreProjectConfiguration {
+    return CoreProjectConfiguration { this.providers.gradleProperty(it).orNull }
+}
