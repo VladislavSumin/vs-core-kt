@@ -9,7 +9,7 @@ import ru.vs.build_logic.utils.PropertyProvider
 
 /**
  * Project configuration class
- * proxies all external configuration (by properties or by environment variables
+ * proxies all external configuration (by properties or by environment variables)
  */
 @Suppress("UnnecessaryAbstractClass")
 open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
@@ -44,6 +44,7 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
     }
 }
 
+// TODO make normal plugin or convention for access to CoreProjectConfiguration
 // We can't use rootProject as holder because when we add plugins to settings.gradle.kts then gradle evaluate this
 // module and evaluate all convention plugin (to generate dsl), but when evaluating for settings we're getting error
 // when trying to resolve rootProject. See https://github.com/gradle/gradle/issues/16532
@@ -54,6 +55,7 @@ val Project.coreConfiguration: CoreProjectConfiguration
             PropertyProvider { project.findProperty(it)?.toString() }
         )
 
+// TODO make normal plugin or convention for access to CoreProjectConfiguration
 fun Settings.createCoreConfiguration(): CoreProjectConfiguration {
     return CoreProjectConfiguration { this.providers.gradleProperty(it).orNull }
 }
