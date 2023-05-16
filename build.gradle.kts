@@ -2,10 +2,15 @@ import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     id("ru.vs.convention.check-updates")
+    `maven-publish`
+
 }
 
-// Setup group for all projects
+val coreVersion: String = providers.gradleProperty("ru.vs.core.version").getOrElse("0.0.1")
+version = coreVersion
+
 allprojects {
+    // Setup group for all projects
     val path = mutableListOf<String>()
     var project = this.parent
     while (project != null && project != project.rootProject) {
@@ -16,6 +21,22 @@ allprojects {
 
     group = if (subpackage.isBlank()) "ru.vs"
     else "ru.vs.$subpackage"
+
+    // Set version for all projects
+    version = coreVersion
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/vladislavsumin/vs-core-kt")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
 
 // Setup detekt for all projects

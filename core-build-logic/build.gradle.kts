@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "ru.vs.core"
-version = "0.0.3"
+version = providers.gradleProperty("ru.vs.core.version").getOrElse("0.0.1")
 
 publishing {
     repositories {

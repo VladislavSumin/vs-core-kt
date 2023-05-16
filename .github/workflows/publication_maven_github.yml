@@ -2,6 +2,11 @@ name: Publication to Github maven
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: 'Version'
 
 jobs:
   publish:
@@ -23,4 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
-          ./gradlew :core-build-logic:publish
+          ./gradlew 
+          :core-build-logic:publish
+          :publish
+          -Pru.vs.core.version=${{ github.event.inputs.version }}
