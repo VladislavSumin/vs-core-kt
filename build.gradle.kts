@@ -3,7 +3,6 @@ import io.gitlab.arturbosch.detekt.Detekt
 plugins {
     id("ru.vs.convention.check-updates")
     `maven-publish`
-
 }
 
 val coreVersion: String = providers.gradleProperty("ru.vs.core.version").getOrElse("0.0.1")
@@ -24,16 +23,17 @@ allprojects {
 
     // Set version for all projects
     version = coreVersion
-}
 
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/vladislavsumin/vs-core-kt")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+    apply { plugin("maven-publish") }
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/vladislavsumin/vs-core-kt")
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
             }
         }
     }
