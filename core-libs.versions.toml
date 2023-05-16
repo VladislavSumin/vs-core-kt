@@ -1,5 +1,5 @@
 [versions]
-vs-core = "0.0.9"
+vs-core = "0.0.10"
 
 # Kotlin
 kotlin-core = "1.8.20"
