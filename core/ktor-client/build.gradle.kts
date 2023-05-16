@@ -40,7 +40,7 @@ kotlin {
             }
         }
 
-        named("uikitMain") {
+        if (project.coreConfiguration.kmp.ios.isEnabled) named("uikitMain") {
             dependencies {
                 implementation(coreLibs.ktor.client.cio)
             }

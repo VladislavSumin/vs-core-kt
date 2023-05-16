@@ -34,6 +34,10 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
         val macosArm64 = PlatformConfig("macosArm64")
         val macos = MergedPlatformConfig(macosX64, macosArm64)
 
+        val iosX64 = PlatformConfig("iosX64")
+        val iosArm64 = PlatformConfig("iosArm64")
+        val ios = MergedPlatformConfig(iosX64, iosArm64)
+
         inner class PlatformConfig(platformName: String) : Configuration(platformName, this) {
             val isEnabled = property("enabled", true)
         }
