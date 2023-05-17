@@ -26,7 +26,7 @@ jobs:
 
       - name: Run gradle
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BYTESAFE_TOKEN: ${{ secrets.BYTESAFE_TOKEN }}
         run: >-
           ./gradlew 
           :core-build-logic:publish

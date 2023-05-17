@@ -28,11 +28,11 @@ allprojects {
     publishing {
         repositories {
             maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/vladislavsumin/vs-core-kt")
+                name = "ByteSafeMaven"
+                url = uri("https://sumin.bytesafe.dev/maven/vs-core/")
                 credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
+                    username = "bytesafe"
+                    password = System.getenv("BYTESAFE_TOKEN")
                 }
             }
         }
