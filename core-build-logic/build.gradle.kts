@@ -36,6 +36,7 @@ dependencies {
     api(coreLibs.gradlePlugins.buildConfig)
     api(coreLibs.gradlePlugins.sqldelight)
     api(coreLibs.gradlePlugins.moko.resources)
+    api(coreLibs.gradlePlugins.assertion)
 }
 
 gradlePlugin {
