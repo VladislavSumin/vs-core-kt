@@ -12,4 +12,10 @@ plugins {
 moduleGraphAssert {
     // TODO request feature to define configurations as regexp
     configurations += setOf("commonMainImplementation", "commonMainApi")
+
+    allowed = arrayOf(
+        ".* -> :core:.*",
+        ".*-api -> .*-api",
+        ".*-impl -> .*-api",
+    )
 }
