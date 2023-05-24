@@ -6,6 +6,7 @@ import org.kodein.di.DIAware
 /**
  * [ComponentContext] with included kodein di [DIAware]
  */
+@Deprecated("Use constructor inject via factory")
 interface DiComponentContext : ComponentContext, DIAware {
     companion object {
         /**
