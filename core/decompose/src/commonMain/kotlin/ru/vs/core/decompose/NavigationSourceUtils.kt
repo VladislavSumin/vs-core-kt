@@ -16,7 +16,7 @@ private class FlowNavigationSource<T : Any>(
 ) : NavigationSource<T> {
     private val subscribers = mutableMapOf<(T) -> Unit, Job>()
 
-    @Synchronized
+    // TODO @Synchronized wait kotlin 1.9
     override fun subscribe(observer: (T) -> Unit) {
         check(!subscribers.contains(observer))
         subscribers[observer] = scope.launch {
@@ -26,7 +26,7 @@ private class FlowNavigationSource<T : Any>(
         }
     }
 
-    @Synchronized
+    // TODO @Synchronized wait korlin 1.9
     override fun unsubscribe(observer: (T) -> Unit) {
         val job = subscribers.remove(observer) ?: error("Observer not found")
         job.cancel()
