@@ -4,13 +4,21 @@ import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.children.*
 import com.arkivanov.decompose.value.Value
+import com.arkivanov.decompose.value.operator.map
 
-fun <C : Any, T : Any> ComponentContext.childList(
+/**
+ * Creates list with any items has our own lifecycle
+ * For equals [C] keep created [T] and reuse it
+ *
+ * @param C - configuration type
+ * @param T - resulting component type
+ */
+fun <C : Any, T : ComponentContext> ComponentContext.childList(
     source: NavigationSource<List<C>>,
     initialStack: () -> List<C> = { emptyList() },
     key: String = "DefaultChildList",
     childFactory: (configuration: C, ComponentContext) -> T,
-): Value<List<Child.Created<C, T>>> = children(
+): Value<List<T>> = children(
     source = source,
     key = key,
     initialState = { ListNavState(configurations = initialStack()) },
@@ -24,7 +32,7 @@ fun <C : Any, T : Any> ComponentContext.childList(
     onEventComplete = { _, _, _ -> /* no action */ },
     backTransformer = { _ -> null },
     childFactory = childFactory,
-)
+).map { childList -> childList.map { it.instance } }
 
 private data class ListNavState<out C : Any>(val configurations: List<C>) : NavState<C> {
     override val children: List<SimpleChildNavState<C>> = configurations.map { configuration ->
