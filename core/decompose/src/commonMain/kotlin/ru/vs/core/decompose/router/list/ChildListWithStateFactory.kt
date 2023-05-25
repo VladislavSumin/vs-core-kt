@@ -17,6 +17,9 @@ import kotlinx.coroutines.flow.StateFlow
  * @param T - resulting component type
  *
  * @param idSelector - get unique id for any source list element
+ *
+ * TODO write performance tests to it
+ * TODO try LinkedHashMap as [source]
  */
 fun <C : Any, ID : Any, T : ComponentContext> ComponentContext.childListWithState(
     source: NavigationSource<List<C>>,
