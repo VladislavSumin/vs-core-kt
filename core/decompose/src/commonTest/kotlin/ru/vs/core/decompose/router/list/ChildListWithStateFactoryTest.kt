@@ -1,30 +1,31 @@
 package ru.vs.core.decompose.router.list
 
-import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.router.children.SimpleNavigation
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.resume
+import kotlinx.coroutines.flow.StateFlow
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertSame
 
-class ChildListFactoryTest {
+class ChildListWithStateFactoryTest {
     private val lifecycle = LifecycleRegistry()
     private val context = DefaultComponentContext(lifecycle)
     private val source = SimpleNavigation<List<Int>>()
 
-    private lateinit var list: Value<List<TestComponentContext<Int>>>
+    private lateinit var list: Value<List<TestComponentContext<StateFlow<Int>>>>
 
     @BeforeEach
     fun setupEach() {
         lifecycle.onCreate()
-        list = context.childList(
+        list = context.childListWithState(
             source = source,
+            idSelector = { it / 10 },
             childFactory = ::TestComponentContext
         )
     }
@@ -32,7 +33,7 @@ class ChildListFactoryTest {
     @Test
     fun checkInitialConfigurationCreation() {
         source.navigate(CONFIG_1)
-        val resultConfig = list.value.map { it.data }
+        val resultConfig = list.value.map { it.data.value }
         assertEquals(CONFIG_1, resultConfig)
     }
 
@@ -71,7 +72,7 @@ class ChildListFactoryTest {
         val newItem = list.value[3]
 
         assertEquals(Lifecycle.State.RESUMED, newItem.lifecycle.state)
-        assertEquals(5, newItem.data)
+        assertEquals(50, newItem.data.value)
     }
 
     @Test
@@ -104,11 +105,32 @@ class ChildListFactoryTest {
         assertEquals(Lifecycle.State.RESUMED, movedItem.lifecycle.state)
     }
 
+    @Test
+    fun checkChangeItemState() {
+        lifecycle.resume()
+        source.navigate(CONFIG_1)
+        val changingItem = list.value[1]
+        assertEquals(20, changingItem.data.value)
+        source.navigate(CONFIG_6)
+
+        val changedItem = list.value[1]
+        assertSame(changingItem, changedItem)
+        assertEquals(Lifecycle.State.RESUMED, changedItem.lifecycle.state)
+        assertEquals(22, changedItem.data.value)
+    }
+
     companion object {
-        private val CONFIG_1 = listOf(1, 2, 3, 4) // default
-        private val CONFIG_2 = listOf(1, 2, 4) // remove one
-        private val CONFIG_3 = listOf(1, 2, 3, 5, 4) // add one
-        private val CONFIG_4 = listOf(1, 2, 5, 4) // change one
-        private val CONFIG_5 = listOf(1, 3, 2, 4) // move one
+        /**
+         * First digit is id,
+         * two digit in pair is value
+         */
+        private val CONFIG_1 = listOf(10, 20, 30, 40) // default
+        private val CONFIG_2 = listOf(10, 20, 40) // remove one
+        private val CONFIG_3 = listOf(10, 20, 30, 50, 40) // add one
+        private val CONFIG_4 = listOf(10, 20, 50, 40) // change one
+        private val CONFIG_5 = listOf(10, 30, 20, 40) // move one
+
+        private val CONFIG_6 = listOf(10, 22, 30, 40) // change state
+
     }
 }
