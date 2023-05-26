@@ -5,9 +5,9 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.resume
 import kotlinx.coroutines.flow.StateFlow
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import ru.vs.core.decompose.BaseComponentTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertSame
@@ -17,7 +17,7 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
 
     private lateinit var list: Value<List<TestComponentContext<StateFlow<Int>>>>
 
-    @BeforeEach
+    @BeforeTest
     fun setupEach() {
         lifecycle.onCreate()
         list = context.childListWithState(

@@ -31,9 +31,7 @@ fun <C : Any, ID : Any, T : ComponentContext> ComponentContext.childListWithStat
 
     fun updateCache(configurations: List<C>) {
         configurations.forEach { configuration ->
-            cache.compute(idSelector(configuration)) { _, state ->
-                state?.also { it.value = configuration } ?: MutableStateFlow(configuration)
-            }
+            cache.getOrPut(idSelector(configuration)) { MutableStateFlow(configuration) }.value = configuration
         }
     }
 

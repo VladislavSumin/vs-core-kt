@@ -7,7 +7,7 @@ import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.parcelable.ParcelableContainer
 import com.arkivanov.essenty.statekeeper.StateKeeperDispatcher
-import org.junit.jupiter.api.Assertions.assertNotEquals
+import kotlin.test.assertNotEquals
 
 abstract class BaseComponentTest {
     private var savedState = ParcelableContainer()

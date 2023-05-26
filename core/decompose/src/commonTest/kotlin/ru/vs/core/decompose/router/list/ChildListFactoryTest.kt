@@ -5,9 +5,9 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.create
 import com.arkivanov.essenty.lifecycle.resume
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import ru.vs.core.decompose.BaseComponentTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertNotSame
@@ -30,7 +30,7 @@ class ChildListFactoryTest : BaseComponentTest() {
         )
     }
 
-    @BeforeEach
+    @BeforeTest
     fun setupEach() {
         lifecycle.onCreate()
         recreateList()
