@@ -15,15 +15,15 @@ import com.arkivanov.decompose.value.operator.map
  */
 fun <C : Any, T : ComponentContext> ComponentContext.childList(
     source: NavigationSource<List<C>>,
-    initialStack: () -> List<C> = { emptyList() },
+    initialState: () -> List<C> = { emptyList() },
     key: String = "DefaultChildList",
     childFactory: (configuration: C, ComponentContext) -> T,
 ): Value<List<T>> = children(
     source = source,
     key = key,
-    initialState = { ListNavState(configurations = initialStack()) },
+    initialState = { ListNavState(configurations = initialState()) },
     saveState = { null },
-    restoreState = { ListNavState(initialStack()) },
+    restoreState = { ListNavState(initialState()) },
     navTransformer = { _, event -> ListNavState(configurations = event) },
     stateMapper = { _, children ->
         @Suppress("UNCHECKED_CAST")
