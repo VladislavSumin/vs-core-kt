@@ -22,9 +22,8 @@ import kotlinx.coroutines.flow.StateFlow
  * TODO write performance tests to it
  */
 fun <C : Any, ID : Any, T : ComponentContext> ComponentContext.childListWithState(
-    source: NavigationSource<List<C>>,
+    state: Value<List<C>>,
     idSelector: (C) -> ID,
-    initialStack: () -> List<C> = { emptyList() },
     key: String = "DefaultChildList",
     childFactory: (state: StateFlow<C>, ComponentContext) -> T,
 ): Value<List<T>> {
@@ -38,48 +37,22 @@ fun <C : Any, ID : Any, T : ComponentContext> ComponentContext.childListWithStat
         }
     }
 
-    fun createInitialState(): ListWithStateNavState<ID> {
-        val stack = initialStack()
-        updateCache(stack)
-        return ListWithStateNavState(stack.map(idSelector))
+    //TODO Fix that?
+    updateCache(state.value)
+
+    val idState = state.map {
+        updateCache(it)
+        it.map(idSelector)
     }
 
-    return children(
-        source = source,
+    return childList(
+        state = idState,
         key = key,
-        initialState = { createInitialState() },
-        saveState = { null },
-        restoreState = { createInitialState() },
-        navTransformer = { _, event ->
-            updateCache(event)
-            ListWithStateNavState(configurations = event.map(idSelector))
-        },
-        stateMapper = { _, children ->
-            @Suppress("UNCHECKED_CAST")
-            children as List<Child.Created<C, T>>
-        },
-        onEventComplete = { _, _, _ -> /* no action */ },
-        backTransformer = { _ -> null },
         childFactory = { id, context ->
             val stateFlow = cache[id]!!
-            childFactory(stateFlow, context).apply {
-                lifecycle.doOnDestroy {
-                    cache.remove(id)
-                }
-            }
+            val childComponent = childFactory(stateFlow, context)
+            childComponent.lifecycle.doOnDestroy { cache.remove(id) }
+            childComponent
         },
-    ).map { childList -> childList.map { it.instance } }
-}
-
-
-private data class ListWithStateNavState<ID : Any>(
-    val configurations: List<ID>
-) : NavState<ID> {
-    override val children: List<ChildNavState<ID>> =
-        configurations.map { configuration ->
-            SimpleChildNavState(
-                configuration = configuration,
-                status = ChildNavState.Status.ACTIVE,
-            )
-        }
+    )
 }

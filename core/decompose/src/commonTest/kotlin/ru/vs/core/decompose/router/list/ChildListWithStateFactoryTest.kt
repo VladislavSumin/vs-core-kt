@@ -1,6 +1,6 @@
 package ru.vs.core.decompose.router.list
 
-import com.arkivanov.decompose.router.children.SimpleNavigation
+import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.resume
@@ -13,7 +13,7 @@ import kotlin.test.assertNotEquals
 import kotlin.test.assertSame
 
 class ChildListWithStateFactoryTest : BaseComponentTest() {
-    private val source = SimpleNavigation<List<Int>>()
+    private val state = MutableValue<List<Int>>(emptyList())
 
     private lateinit var list: Value<List<TestComponentContext<StateFlow<Int>>>>
 
@@ -21,7 +21,7 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
     fun setupEach() {
         lifecycle.onCreate()
         list = context.childListWithState(
-            source = source,
+            state = state,
             idSelector = { it / 10 },
             childFactory = ::TestComponentContext
         )
@@ -29,7 +29,7 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
 
     @Test
     fun checkInitialConfigurationCreation() {
-        source.navigate(CONFIG_1)
+        state.value = (CONFIG_1)
         val resultConfig = list.value.map { it.data.value }
         assertEquals(CONFIG_1, resultConfig)
     }
@@ -37,11 +37,11 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
     @Test
     fun checkRemoveItem() {
         lifecycle.resume()
-        source.navigate(CONFIG_1)
+        state.value = CONFIG_1
         val notChangingItem = list.value[1]
         val itemMovingToPreviousPosition = list.value[3]
         val removingItem = list.value[2]
-        source.navigate(CONFIG_2)
+        state.value = CONFIG_2
 
         assertSame(notChangingItem, list.value[1])
         assertEquals(Lifecycle.State.RESUMED, notChangingItem.lifecycle.state)
@@ -55,10 +55,10 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
     @Test
     fun checkAddItem() {
         lifecycle.resume()
-        source.navigate(CONFIG_1)
+        state.value = CONFIG_1
         val notChangingItem = list.value[1]
         val itemMovingToNextPosition = list.value[3]
-        source.navigate(CONFIG_3)
+        state.value = CONFIG_3
 
         assertSame(notChangingItem, list.value[1])
         assertEquals(Lifecycle.State.RESUMED, notChangingItem.lifecycle.state)
@@ -75,10 +75,10 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
     @Test
     fun checkChangeItem() {
         lifecycle.resume()
-        source.navigate(CONFIG_1)
+        state.value = CONFIG_1
         val notChangingItem = list.value[1]
         val changingItem = list.value[2]
-        source.navigate(CONFIG_4)
+        state.value = CONFIG_4
 
         assertSame(notChangingItem, list.value[1])
         assertEquals(Lifecycle.State.RESUMED, notChangingItem.lifecycle.state)
@@ -93,9 +93,9 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
     @Test
     fun checkMoveItem() {
         lifecycle.resume()
-        source.navigate(CONFIG_1)
+        state.value = CONFIG_1
         val movingItem = list.value[2]
-        source.navigate(CONFIG_5)
+        state.value = CONFIG_5
 
         val movedItem = list.value[1]
         assertSame(movingItem, movedItem)
@@ -105,10 +105,10 @@ class ChildListWithStateFactoryTest : BaseComponentTest() {
     @Test
     fun checkChangeItemState() {
         lifecycle.resume()
-        source.navigate(CONFIG_1)
+        state.value = CONFIG_1
         val changingItem = list.value[1]
         assertEquals(20, changingItem.data.value)
-        source.navigate(CONFIG_6)
+        state.value = CONFIG_6
 
         val changedItem = list.value[1]
         assertSame(changingItem, changedItem)
