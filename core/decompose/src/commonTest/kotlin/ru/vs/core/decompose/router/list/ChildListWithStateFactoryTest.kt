@@ -1,21 +1,18 @@
 package ru.vs.core.decompose.router.list
 
-import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.router.children.SimpleNavigation
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
-import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.resume
 import kotlinx.coroutines.flow.StateFlow
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import ru.vs.core.decompose.BaseComponentTest
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertSame
 
-class ChildListWithStateFactoryTest {
-    private val lifecycle = LifecycleRegistry()
-    private val context = DefaultComponentContext(lifecycle)
+class ChildListWithStateFactoryTest : BaseComponentTest() {
     private val source = SimpleNavigation<List<Int>>()
 
     private lateinit var list: Value<List<TestComponentContext<StateFlow<Int>>>>

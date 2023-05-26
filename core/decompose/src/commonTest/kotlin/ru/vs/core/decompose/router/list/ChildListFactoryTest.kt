@@ -1,32 +1,39 @@
 package ru.vs.core.decompose.router.list
 
-import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.router.children.SimpleNavigation
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
-import com.arkivanov.essenty.lifecycle.LifecycleRegistry
+import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import ru.vs.core.decompose.BaseComponentTest
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
+import kotlin.test.assertNotSame
 import kotlin.test.assertSame
 
-class ChildListFactoryTest {
-    private val lifecycle = LifecycleRegistry()
-    private val context = DefaultComponentContext(lifecycle)
+class ChildListFactoryTest : BaseComponentTest() {
     private val source = SimpleNavigation<List<Int>>()
 
     private lateinit var list: Value<List<TestComponentContext<Int>>>
 
-    @BeforeEach
-    fun setupEach() {
-        lifecycle.onCreate()
+    override fun recreateContextWithSaveInstanceKeeper() {
+        super.recreateContextWithSaveInstanceKeeper()
+        recreateList()
+    }
+
+    private fun recreateList() {
         list = context.childList(
             source = source,
             childFactory = ::TestComponentContext
         )
+    }
+
+    @BeforeEach
+    fun setupEach() {
+        lifecycle.onCreate()
+        recreateList()
     }
 
     @Test
@@ -102,6 +109,25 @@ class ChildListFactoryTest {
         val movedItem = list.value[1]
         assertSame(movingItem, movedItem)
         assertEquals(Lifecycle.State.RESUMED, movedItem.lifecycle.state)
+    }
+
+    @Test
+    fun checkComponentRecreation() {
+        lifecycle.resume()
+        source.navigate(CONFIG_1)
+        val item = list.value[1]
+
+        lifecycle.destroy()
+        recreateContextWithSaveInstanceKeeper()
+
+        lifecycle.resume()
+        source.navigate(CONFIG_1)
+        val newItem = list.value[1]
+
+        assertNotSame(item, newItem)
+        assertEquals(Lifecycle.State.DESTROYED, item.lifecycle.state)
+        assertEquals(Lifecycle.State.RESUMED, newItem.lifecycle.state)
+        assertEquals(item.keepInstanceUniqueValue, newItem.keepInstanceUniqueValue)
     }
 
     companion object {
