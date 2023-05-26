@@ -3,6 +3,7 @@ package ru.vs.core.decompose.router.list
 import com.arkivanov.decompose.router.children.SimpleNavigation
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
+import com.arkivanov.essenty.lifecycle.create
 import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume
 import org.junit.jupiter.api.BeforeEach
@@ -26,6 +27,8 @@ class ChildListFactoryTest : BaseComponentTest() {
     private fun recreateList() {
         list = context.childList(
             source = source,
+            //TODO fix that!
+            initialState = { CONFIG_1 },
             childFactory = ::TestComponentContext
         )
     }
@@ -117,7 +120,7 @@ class ChildListFactoryTest : BaseComponentTest() {
         source.navigate(CONFIG_1)
         val item = list.value[1]
 
-        lifecycle.destroy()
+        lifecycle.create()
         recreateContextWithSaveInstanceKeeper()
 
         lifecycle.resume()

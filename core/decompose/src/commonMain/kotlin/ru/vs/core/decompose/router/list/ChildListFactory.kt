@@ -5,6 +5,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.children.*
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.value.operator.map
+import com.arkivanov.essenty.parcelable.ParcelableContainer
 
 /**
  * Creates list with any items has our own lifecycle
@@ -22,7 +23,11 @@ fun <C : Any, T : ComponentContext> ComponentContext.childList(
     source = source,
     key = key,
     initialState = { ListNavState(configurations = initialState()) },
-    saveState = { null },
+    saveState = {
+        // We need to any state
+        // If we return null here when instanceKeeper insurances will be forgotten
+        ParcelableContainer()
+    },
     restoreState = { ListNavState(initialState()) },
     navTransformer = { _, event -> ListNavState(configurations = event) },
     stateMapper = { _, children ->
