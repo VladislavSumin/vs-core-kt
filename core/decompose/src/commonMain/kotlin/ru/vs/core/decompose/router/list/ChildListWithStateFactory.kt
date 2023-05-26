@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.StateFlow
  * @param ID - unique id type
  * @param T - resulting component type
  *
- * @param idSelector - get unique id for any source list element
+ * @param idSelector - get **unique** id for any source list element
  *
  * TODO write performance tests to it
  */
