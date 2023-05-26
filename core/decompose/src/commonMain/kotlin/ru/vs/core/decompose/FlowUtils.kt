@@ -1,21 +1,21 @@
 package ru.vs.core.decompose
 
-import com.arkivanov.decompose.router.children.NavigationSource
+import com.arkivanov.decompose.value.Value
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-@Deprecated("Use StateFlow.asValue()")
-fun <T : Any> Flow<T>.asNavigationSource(scope: CoroutineScope): NavigationSource<T> {
-    return FlowNavigationSource(this, scope)
+fun <T : Any> StateFlow<T>.asValue(scope: CoroutineScope): Value<T> {
+    return FlowAsValue(this, scope)
 }
 
-private class FlowNavigationSource<T : Any>(
-    private val parentFlow: Flow<T>,
+private class FlowAsValue<T : Any>(
+    private val parentFlow: StateFlow<T>,
     private val scope: CoroutineScope,
-) : NavigationSource<T> {
+) : Value<T>() {
     private val subscribers = mutableMapOf<(T) -> Unit, Job>()
+    override val value: T get() = parentFlow.value
 
     // TODO @Synchronized wait kotlin 1.9
     override fun subscribe(observer: (T) -> Unit) {
