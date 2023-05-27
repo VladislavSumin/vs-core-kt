@@ -35,11 +35,6 @@ fun <C : Any, ID : Any, T : ComponentContext> ComponentContext.childListWithStat
         }
     }
 
-    // TODO Fix that?
-    // Нет подходящего калбека что бы засунуть туда это
-    // Пока пусть так висит, кривинько конечно но работает
-    updateCache(state.value)
-
     val idState = state.map {
         updateCache(it)
         it.map(idSelector)
