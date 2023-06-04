@@ -17,7 +17,7 @@
 
     <Loggers>
         <!-- Root Logger -->
-        <Root additivity="false" level="ALL">
+        <Root additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="AsyncFile"/>
         </Root>
