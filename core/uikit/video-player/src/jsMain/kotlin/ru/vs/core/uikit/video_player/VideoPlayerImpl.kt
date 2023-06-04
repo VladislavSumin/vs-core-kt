@@ -6,15 +6,8 @@ import androidx.compose.ui.Modifier
 
 @Composable
 internal actual fun VideoPlayerImpl(
-    url: String,
-    isResumed: Boolean,
-    volume: Float,
-    speed: Float,
-    seek: Float,
-    isFullscreen: Boolean,
-    progressState: MutableState<Progress>,
+    source: Playable,
     modifier: Modifier,
-    onFinish: (() -> Unit)?
 ) {
     TODO()
 }
