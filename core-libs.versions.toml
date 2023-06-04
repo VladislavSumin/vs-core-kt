@@ -33,6 +33,7 @@ moko-resources = "0.21.2"
 essenty = "1.1.0"
 multiplatformSettings = "1.0.0"
 okio = "3.3.0"
+vlcj = "4.7.0"
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -68,6 +69,7 @@ vs-core-serialization-core = { module = "ru.vs.core.serialization:core", version
 vs-core-serialization-json = { module = "ru.vs.core.serialization:json", version.ref = "vs-core" }
 vs-core-uikit-dropdownMenu = { module = "ru.vs.core.uikit:dropdown-menu", version.ref = "vs-core" }
 vs-core-uikit-localConfiguration = { module = "ru.vs.core.uikit:local-configuration", version.ref = "vs-core" }
+vs-core-uikit-videoPlayer = { module = "ru.vs.core.uikit:video-player", version.ref = "vs-core" }
 vs-core-utils = { module = "ru.vs.core:utils", version.ref = "vs-core" }
 
 # Plugins
@@ -154,6 +156,7 @@ moko-resources-compose = { module = "dev.icerock.moko:resources-compose", versio
 multiplatformSettings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
 multiplatformSettings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
 okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
+vlcj = { module = "uk.co.caprica:vlcj", version.ref = "vlcj" }
 
 # Testing
 testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }
