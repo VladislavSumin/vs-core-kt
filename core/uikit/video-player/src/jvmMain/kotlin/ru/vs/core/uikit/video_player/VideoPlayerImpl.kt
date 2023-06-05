@@ -6,6 +6,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import androidx.compose.ui.graphics.Color
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import uk.co.caprica.vlcj.factory.discovery.NativeDiscovery
 import uk.co.caprica.vlcj.player.base.MediaPlayer
 import uk.co.caprica.vlcj.player.component.CallbackMediaPlayerComponent
@@ -22,8 +25,14 @@ internal actual fun VideoPlayerImpl(
     val mediaPlayer = remember { mediaPlayerComponent.mediaPlayer() }
     val factory = remember { { mediaPlayerComponent } }
 
-    // ":demux=h264" option for raw h264
-    // LaunchedEffect(url) { mediaPlayer.media().play/*OR .start*/(url) }
+    DisposableEffect(source) {
+        val scope = CoroutineScope(Dispatchers.IO)
+        val media = when (source) {
+            is Playable.FlowOfByteArrays -> FlowOfByteArraysMedia(source, scope)
+        }
+        mediaPlayer.media().play(media, ":demux=h264" /*":h264-fps=10"*/)
+        onDispose { scope.cancel() }
+    }
 
     DisposableEffect(Unit) { onDispose(mediaPlayer::release) }
     SwingPanel(
