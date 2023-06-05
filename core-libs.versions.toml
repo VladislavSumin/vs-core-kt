@@ -33,7 +33,7 @@ moko-resources = "0.21.2"
 essenty = "1.1.0"
 multiplatformSettings = "1.0.0"
 okio = "3.3.0"
-vlcj = "4.7.0"
+vlcj = "4.8.2"
 
 # Testing
 testing-junit5-core = "5.8.2"
