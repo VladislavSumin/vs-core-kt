@@ -23,6 +23,7 @@ kotlin {
         named("commonMain") {
             dependencies {
                 implementation(projects.core.compose)
+                implementation(projects.core.logging)
             }
         }
         named("jvmMain") {
