@@ -1,10 +1,13 @@
 package ru.vs.core.uikit.video_player
 
 import android.media.MediaCodec
+import android.media.MediaCodecInfo
+import android.media.MediaCodecList
 import android.media.MediaFormat
 import android.view.Surface
 import io.github.oshai.KotlinLogging
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
 import java.nio.ByteBuffer
@@ -15,9 +18,23 @@ internal class Decoder(
     private val scope: CoroutineScope,
 ) {
 
+    private fun selectCodec(mimeType: String) {
+        val numCodecs = MediaCodecList.getCodecCount()
+        for (i in 0 until numCodecs) {
+            val codecInfo = MediaCodecList.getCodecInfoAt(i)
+            if (!codecInfo.supportedTypes.contains("video/avc")) continue
+            if (codecInfo.isEncoder) continue
+            println("====================")
+            println(codecInfo.name)
+            println(codecInfo.canonicalName)
+            println("====================")
+        }
+    }
+
     fun init(surface: Surface) {
+        selectCodec("video/avc")
         logger.info { "init()" }
-        val codec = MediaCodec.createDecoderByType("video/avc")
+        val codec = MediaCodec.createByCodecName("c2.android.avc.decoder")
         val format = MediaFormat()
         format.setString(MediaFormat.KEY_MIME, "video/avc")
         format.setInteger(MediaFormat.KEY_WIDTH, 800)
@@ -50,7 +67,7 @@ internal class Decoder(
                 bufferIndex = -1
             }
 
-            fun updateBuffer(zerosCount:Int) {
+            fun updateBuffer(zerosCount: Int) {
                 releaseBuffer()
                 takeBuffer(zerosCount)
             }
@@ -92,10 +109,10 @@ internal class Decoder(
                         buffer!!.put(b)
                         if (isNaluFind) {
                             logger.info { "zeros count = $zerosCount" }
-                            if (zerosCount > 3) zerosCount = 3
+                            if (zerosCount > 2) zerosCount = 2
                             buffer!!.position(buffer!!.position() - zerosCount - 2)
                             updateBuffer(zerosCount)
-                            logger.info { "naluType = $b" }
+                            logger.info { "naluType = $b, v2= ${(b.toInt() and 0b1111111).toByte()}" }
 
                             isNaluFind = false
                             zerosCount = 0
@@ -136,6 +153,7 @@ internal class Decoder(
                 }
                 logger.info { "get()" }
                 codec.releaseOutputBuffer(index, true)
+                delay(8)
             }
         }
 
