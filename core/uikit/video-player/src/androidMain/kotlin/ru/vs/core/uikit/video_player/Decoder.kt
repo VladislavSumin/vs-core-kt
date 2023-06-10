@@ -20,6 +20,7 @@ internal class Decoder(
         check(scope == null)
         scope = CoroutineScope(Dispatchers.IO)
 
+        // TODO Add exception handling here
         scope!!.launch {
 
             // Don't use create by media type because default codec can't parse given video stream
@@ -72,6 +73,8 @@ internal class Decoder(
             }
             buffer = mediaCodec.getInputBuffer(bufferIndex)!!
             check(buffer!!.position() == 0)
+
+            // Add NALu header to buffer
             buffer!!.put(0)
             buffer!!.put(0)
             buffer!!.put(1)
@@ -94,62 +97,57 @@ internal class Decoder(
         var emitterIndex = 0
 
         fun findFirstNalu(bArr: ByteArray) {
-            while (true) {
-                val length = bArr.size
-                val i: Int = emitterIndex
-                if (length > i) {
-                    val b = bArr[i]
-                    if (b.toInt() == 0) {
-                        zerosCount++
-                    } else if (b.toInt() != 1 || zerosCount < 2) {
+            while (emitterIndex < bArr.size) {
+                val b = bArr[emitterIndex]
+                when {
+                    b.toInt() == 0 -> zerosCount++
+                    b.toInt() != 1 || zerosCount < 2 -> zerosCount = 0
+                    else -> {
                         zerosCount = 0
-                    } else {
-                        zerosCount = 0
-                        emitterIndex = i + 1
+                        emitterIndex++
                         isFirstNaluFind = true
                         return
                     }
-                    emitterIndex = i + 1
-                } else {
-                    return
                 }
+                emitterIndex++
             }
         }
 
         fun processInput(bArr: ByteArray) {
-            while (true) {
-                val length = bArr.size
-                val i: Int = emitterIndex
-                if (length > i) {
-                    val b = bArr[i]
-                    buffer!!.put(b)
-                    if (isNaluFind) {
+            while (emitterIndex < bArr.size) {
+                val b = bArr[emitterIndex]
+                buffer!!.put(b)
+
+                when {
+                    isNaluFind -> {
+                        // if we found more than 3 zeros its mean some zeros (zerosCount - 3) is part
+                        // of previous package and we must save them
                         if (zerosCount > 3) zerosCount = 3
+
+                        // we remove 2 from array size, one for byte 0x01 - last byte of NALu header
+                        // and second for value b placed to buffer before when condition check
                         buffer!!.position(buffer!!.position() - zerosCount - 2)
+
                         updateBuffer()
 
                         isNaluFind = false
                         zerosCount = 0
+
+                        // Because we swap arrays and b is part of next package add them to array again
                         buffer!!.put(b)
-                    } else if (b.toInt() == 0) {
-                        zerosCount++
-                    } else if (b.toInt() != 1 || zerosCount < 2) {
-                        zerosCount = 0
-                    } else {
-                        isNaluFind = true
                     }
-                    emitterIndex++
-                } else {
-                    return
+
+                    b.toInt() == 0 -> zerosCount++
+                    b.toInt() != 1 || zerosCount < 2 -> zerosCount = 0
+                    else -> isNaluFind = true
                 }
+                emitterIndex++
             }
         }
 
         fun processNextInput(bArr: ByteArray) {
             emitterIndex = 0
-            if (!isFirstNaluFind) {
-                findFirstNalu(bArr)
-            }
+            if (!isFirstNaluFind) findFirstNalu(bArr)
             processInput(bArr)
         }
 
