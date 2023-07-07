@@ -1,7 +1,6 @@
 package ru.vs.convention.kmp
 
 import org.gradle.api.tasks.testing.Test
-import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.withType
 
 plugins {
