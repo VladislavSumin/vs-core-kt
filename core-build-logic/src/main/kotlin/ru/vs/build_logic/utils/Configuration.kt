@@ -28,6 +28,8 @@ abstract class Configuration(
         else "$basePath.$relativePath"
 
         val rawProperty = propertyProvider.getProperty(path) ?: return null
+
+        @Suppress("UNCHECKED_CAST")
         return when (kClass) {
             String::class -> rawProperty
             Boolean::class -> rawProperty.toBoolean()
