@@ -59,6 +59,8 @@ vs-core-coroutines = { module = "ru.vs.core:coroutines", version.ref = "vs-core"
 vs-core-database = { module = "ru.vs.core:database", version.ref = "vs-core" }
 vs-core-decompose = { module = "ru.vs.core:decompose", version.ref = "vs-core" }
 vs-core-di = { module = "ru.vs.core:di", version.ref = "vs-core" }
+vs-core-factoryGenerator-api = { module = "ru.vs.core.factory-generator:api", version.ref = "vs-core" }
+vs-core-factoryGenerator-ksp = { module = "ru.vs.core.factory-generator:ksp", version.ref = "vs-core" }
 vs-core-keyValueStorage = { module = "ru.vs.core:key-value-storage", version.ref = "vs-core" }
 vs-core-ktor-network = { module = "ru.vs.core:ktor-network", version.ref = "vs-core" }
 vs-core-ktor-client = { module = "ru.vs.core:ktor-client", version.ref = "vs-core" }
