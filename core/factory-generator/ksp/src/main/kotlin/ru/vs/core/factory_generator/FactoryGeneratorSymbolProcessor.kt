@@ -9,6 +9,7 @@ import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.google.devtools.ksp.symbol.KSType
 import com.google.devtools.ksp.symbol.KSValueParameter
+import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
@@ -27,11 +28,21 @@ internal class FactoryGeneratorSymbolProcessor(
 ) : SymbolProcessor {
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
-        // Getting all classes annotated with @GenerateFactory
-        resolver.getSymbolsWithAnnotation(GenerateFactory::class.qualifiedName!!)
-            .forEach(this::processGenerateFactoryAnnotation)
-        // Always process all elements
-        return emptyList()
+        return resolver.getSymbolsWithAnnotation(GenerateFactory::class.qualifiedName!!)
+            .filterNot(this::processAnnotated)
+            .toList()
+    }
+
+    private fun processAnnotated(annotated: KSAnnotated): Boolean {
+        return try {
+            processGenerateFactoryAnnotation(annotated)
+            true
+        } catch (e: Exception) {
+            // We have cases when one generated factory using inside another generated factory,
+            // for these cases we need to processing sources with more than once iteration
+            // TODO process errors correctly
+            false
+        }
     }
 
     private fun processGenerateFactoryAnnotation(instance: KSAnnotated) {
@@ -43,12 +54,20 @@ internal class FactoryGeneratorSymbolProcessor(
 
         val factoryInterface = instance.annotations
             .first { it.annotationType.toTypeName() == GenerateFactory::class.asTypeName() }
-            .arguments.first().value as KSType
+            .arguments.first().value as KSType?
 
-        generateFactoryImpl(factoryInterface, instance)
+
+        if (factoryInterface == null) {
+            generateFactoryInterfaceAndImpl(instance)
+        } else {
+            generateFactoryImplForFactoryInterface(factoryInterface, instance)
+        }
     }
 
-    private fun generateFactoryImpl(
+    /**
+     * Generate factory implementation by given [factoryInterface] && [instance]
+     */
+    private fun generateFactoryImplForFactoryInterface(
         factoryInterface: KSType,
         instance: KSClassDeclaration,
     ) {
@@ -132,6 +151,97 @@ internal class FactoryGeneratorSymbolProcessor(
             factoryImplementationName
         )
             .addType(clazz)
+            .build()
+            .writeTo(codeGenerator, false)
+    }
+
+    /**
+     * Generate factory interface for [instance] with one method named [createMethodName].
+     * Interface name is [instance] name + [suffix]
+     *
+     * Generate factory implementation for interface above with name [instance] name + [suffix] + [implSuffix]
+     *
+     * @param instance instance for creation
+     * @param suffix factory name suffix
+     * @param implSuffix factory impl name suffix
+     * @param createMethodName name for create [instance] method
+     */
+    private fun generateFactoryInterfaceAndImpl(
+        instance: KSClassDeclaration,
+        suffix: String = "Factory",
+        implSuffix: String = "Impl",
+        createMethodName: String = "create",
+    ) {
+        val name = instance.simpleName.getShortName() + suffix
+
+        val codeBlock = CodeBlock.builder()
+            .add("return %T(", instance.toClassName())
+            .apply {
+                instance.primaryConstructor!!.parameters.forEach { parameter ->
+                    add("%L, ", parameter.name!!.getShortName())
+                }
+            }
+            .add(")")
+            .build()
+
+        // Generate "create" function with parameters matches instance primary constructor
+        val function = FunSpec.builder(createMethodName)
+            .addModifiers(KModifier.ABSTRACT)
+            .returns(instance.toClassName())
+            .build()
+        val functionImpl = FunSpec.builder(createMethodName)
+            .addModifiers(KModifier.OVERRIDE)
+            .addCode(codeBlock)
+            .returns(instance.toClassName())
+            .build()
+
+        // Generate constructor
+        val constructor = FunSpec.constructorBuilder()
+            .apply {
+                instance.primaryConstructor!!.parameters.forEach {
+                    addParameter(it.name!!.getShortName(), it.type.toTypeName())
+                }
+            }
+            .build()
+
+        // Generate class
+        val clazz = TypeSpec.interfaceBuilder(name)
+            .addModifiers(KModifier.INTERNAL)
+            .addFunction(function)
+            .build()
+        // Generate class impl
+        val clazzImpl = TypeSpec.classBuilder(name + implSuffix)
+            .primaryConstructor(constructor)
+            .addSuperinterface(ClassName(instance.packageName.asString(), name))
+            .addModifiers(KModifier.INTERNAL)
+            .apply {
+                instance.primaryConstructor!!.parameters.forEach {
+                    val name = it.name!!.getShortName()
+                    addProperty(
+                        PropertySpec.builder(name, it.type.toTypeName())
+                            .initializer(name)
+                            .addModifiers(KModifier.PRIVATE)
+                            .build()
+                    )
+                }
+            }
+            .addFunction(functionImpl)
+            .build()
+
+        // Generate kotlin file
+        FileSpec.builder(
+            instance.packageName.asString(),
+            name,
+        )
+            .addType(clazz)
+            .build()
+            .writeTo(codeGenerator, false)
+
+        FileSpec.builder(
+            instance.packageName.asString(),
+            name + implSuffix,
+        )
+            .addType(clazzImpl)
             .build()
             .writeTo(codeGenerator, false)
     }
