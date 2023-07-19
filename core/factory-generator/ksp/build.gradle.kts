@@ -1,10 +1,7 @@
 plugins {
-    kotlin("jvm")
+    id("ru.vs.convention.ksp-code-generator")
 }
 
 dependencies {
     implementation(projects.core.factoryGenerator.api)
-    implementation(coreLibs.ksp)
-    implementation(coreLibs.kotlinpoet.core)
-    implementation(coreLibs.kotlinpoet.ksp)
 }
