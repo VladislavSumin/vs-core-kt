@@ -16,7 +16,7 @@ android-activity-compose = "1.7.1"
 android-compose-compiler = "1.4.6"
 
 # Compose
-jb-compose = "1.5.0-dev1049"
+jb-compose = "1.5.0-dev1104"
 decompose = "2.0.0-compose-experimental-alpha-02"
 
 # Logging
