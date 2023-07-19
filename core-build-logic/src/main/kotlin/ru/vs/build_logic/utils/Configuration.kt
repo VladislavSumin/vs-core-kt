@@ -2,6 +2,7 @@ package ru.vs.build_logic.utils
 
 import kotlin.reflect.KClass
 
+@Suppress("UnnecessaryAbstractClass")
 abstract class Configuration(
     private val basePath: String,
     private val propertyProvider: PropertyProvider,
@@ -19,7 +20,6 @@ abstract class Configuration(
 
     protected inline fun <reified T : Any> propertyOrNull(relativePath: String): T? =
         propertyOrNull(relativePath, T::class)
-
 
     protected fun <T : Any> propertyOrNull(relativePath: String, kClass: KClass<T>): T? {
 
@@ -40,5 +40,10 @@ abstract class Configuration(
 }
 
 fun interface PropertyProvider {
+    /**
+     * Provides property value by property name
+     * @param name property name
+     * @return property value or null if property not exists
+     */
     fun getProperty(name: String): String?
 }

@@ -36,7 +36,6 @@ if (project.name != "gradle-kotlin-dsl-accessors") {
         }
     }
 
-
     benchmark {
         targets {
             register("jvm")
