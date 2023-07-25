@@ -29,7 +29,6 @@ kodein = "7.20.1"
 ktor = "2.3.0"
 kotlinpoet = "1.13.1"
 sqldelight = "2.0.0-alpha05"
-mvikotlin = "3.2.0"
 moko-resources = "0.21.2"
 essenty = "1.1.0"
 multiplatformSettings = "1.0.0"
@@ -66,7 +65,6 @@ vs-core-ktor-network = { module = "ru.vs.core:ktor-network", version.ref = "vs-c
 vs-core-ktor-client = { module = "ru.vs.core:ktor-client", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
-vs-core-mvi = { module = "ru.vs.core:mvi", version.ref = "vs-core" }
 vs-core-network = { module = "ru.vs.core:network", version.ref = "vs-core" }
 vs-core-okio = { module = "ru.vs.core:okio", version.ref = "vs-core" }
 vs-core-serialization-core = { module = "ru.vs.core.serialization:core", version.ref = "vs-core" }
@@ -150,11 +148,6 @@ logging-slf4j = { module = "org.slf4j:slf4j-api", version.ref = "logging-slf4j" 
 ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 kotlinpoet-core = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinpoet" }
-
-# MVI Kotlin
-mvikotlin-core = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
-mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
-mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
 
 # Other
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "gradlePlugins-detekt" }
