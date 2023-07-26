@@ -13,7 +13,9 @@ internal actual fun DirectDI.createPlatformSentryInitializer(): PlatformSentryIn
 private class PlatformSentryInitializerImpl(
     private val context: Context
 ) : PlatformSentryInitializer {
-    override fun init(configuration: OptionsConfiguration) {
-        Sentry.init(context, configuration)
+    override fun init(dsn: String) {
+        Sentry.init(context) {
+            it.dsn = dsn
+        }
     }
 }

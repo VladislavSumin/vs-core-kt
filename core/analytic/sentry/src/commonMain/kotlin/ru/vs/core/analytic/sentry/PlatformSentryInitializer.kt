@@ -1,10 +1,9 @@
 package ru.vs.core.analytic.sentry
 
-import io.sentry.kotlin.multiplatform.OptionsConfiguration
 import org.kodein.di.DirectDI
 
 internal interface PlatformSentryInitializer {
-    fun init(configuration: OptionsConfiguration)
+    fun init(dsn:String)
 }
 
 internal expect fun DirectDI.createPlatformSentryInitializer(): PlatformSentryInitializer

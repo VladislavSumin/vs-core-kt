@@ -1,6 +1,5 @@
 package ru.vs.core.analytic.sentry
 
-import io.sentry.kotlin.multiplatform.OptionsConfiguration
 import io.sentry.kotlin.multiplatform.Sentry
 import org.kodein.di.DirectDI
 
@@ -9,7 +8,9 @@ internal actual fun DirectDI.createPlatformSentryInitializer(): PlatformSentryIn
 }
 
 private class PlatformSentryInitializerImpl : PlatformSentryInitializer {
-    override fun init(configuration: OptionsConfiguration) {
-        Sentry.init(configuration)
+    override fun init(dsn: String) {
+        Sentry.init {
+            it.dsn = dsn
+        }
     }
 }

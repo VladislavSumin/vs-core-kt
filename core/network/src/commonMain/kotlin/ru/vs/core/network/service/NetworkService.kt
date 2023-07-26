@@ -7,6 +7,7 @@ import io.ktor.network.sockets.openReadChannel
 import io.ktor.network.sockets.openWriteChannel
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.ByteWriteChannel
+import io.ktor.utils.io.core.use
 
 /**
  * Primary interface to **any** network interaction

@@ -1,11 +1,5 @@
 plugins {
-    id("ru.vs.convention.kmp.android-library")
-    id("ru.vs.convention.kmp.jvm")
-    id("ru.vs.convention.kmp.ios")
-    // id("ru.vs.convention.kmp.js") sentry don't support js
-    id("ru.vs.convention.kmp.windows")
-    id("ru.vs.convention.kmp.linux")
-    id("ru.vs.convention.kmp.macos")
+    id("ru.vs.convention.kmp.all")
 }
 
 android {
@@ -17,6 +11,17 @@ kotlin {
         named("commonMain") {
             dependencies {
                 implementation(projects.core.di)
+            }
+        }
+
+        named("jvmMain") {
+            dependencies {
+                implementation(coreLibs.sentry)
+            }
+        }
+
+        named("androidMain"){
+            dependencies {
                 implementation(coreLibs.sentry)
             }
         }
