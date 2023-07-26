@@ -31,6 +31,7 @@ dependencyResolutionManagement {
     }
 }
 
+include(":core:analytic:sentry")
 include(":core:compose")
 include(":core:coroutines")
 include(":core:database")

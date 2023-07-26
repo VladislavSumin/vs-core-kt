@@ -2,6 +2,11 @@ package ru.vs.build_logic.utils
 
 import kotlin.reflect.KClass
 
+/**
+ * Basic class for create configuration classes (see implementations)
+ *
+ * @param basePath base path, all properties in this configuration will be relative about it
+ */
 @Suppress("UnnecessaryAbstractClass")
 abstract class Configuration(
     private val basePath: String,

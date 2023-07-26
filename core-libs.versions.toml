@@ -34,6 +34,7 @@ essenty = "1.1.0"
 multiplatformSettings = "1.0.0"
 okio = "3.3.0"
 vlcj = "4.8.2"
+sentry = "0.2.1"
 
 # Testing
 testing-junit5-core = "5.8.2"
@@ -53,6 +54,7 @@ gradlePlugins-assertion = "2.3.1"
 
 [libraries]
 # Core
+vs-core-analytic-sentry = { module = "ru.vs.core.analytic:sentry", version.ref = "vs-core" }
 vs-core-compose = { module = "ru.vs.core:compose", version.ref = "vs-core" }
 vs-core-coroutines = { module = "ru.vs.core:coroutines", version.ref = "vs-core" }
 vs-core-database = { module = "ru.vs.core:database", version.ref = "vs-core" }
@@ -157,6 +159,7 @@ multiplatformSettings-core = { module = "com.russhwolf:multiplatform-settings", 
 multiplatformSettings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
 okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 vlcj = { module = "uk.co.caprica:vlcj", version.ref = "vlcj" }
+sentry = { module = "io.sentry:sentry-kotlin-multiplatform", version.ref = "sentry" }
 
 # Testing
 testing-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "testing-junit5-core" }
