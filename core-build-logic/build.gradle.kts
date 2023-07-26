@@ -30,6 +30,7 @@ dependencies {
     api(coreLibs.gradlePlugins.kotlin.atomicfu)
     api(coreLibs.gradlePlugins.kotlin.allopen)
     api(coreLibs.gradlePlugins.kotlin.benchmark)
+    api(coreLibs.gradlePlugins.kotlin.kover)
     api(coreLibs.gradlePlugins.ksp)
     api(coreLibs.gradlePlugins.android)
     api(coreLibs.gradlePlugins.jb.compose)

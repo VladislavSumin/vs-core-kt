@@ -8,6 +8,7 @@ kotlin-coroutines = "1.7.0-RC"
 kotlin-serialization = "1.5.0"
 kotlin-atomicfu = "0.20.2"
 kotlin-benchmark = "0.4.8"
+kotlin-kover = "0.7.2"
 
 # Android
 android-core = "1.9.0"
@@ -82,6 +83,7 @@ gradlePlugins-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-ser
 gradlePlugins-kotlin-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "kotlin-atomicfu" }
 gradlePlugins-kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin-core" }
 gradlePlugins-kotlin-benchmark = { module = "org.jetbrains.kotlinx:kotlinx-benchmark-plugin", version.ref = "kotlin-benchmark" }
+gradlePlugins-kotlin-kover = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kotlin-kover" }
 gradlePlugins-ksp = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-android" }
 gradlePlugins-jb-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jb-compose" }
