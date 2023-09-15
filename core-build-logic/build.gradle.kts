@@ -42,6 +42,7 @@ dependencies {
     api(coreLibs.gradlePlugins.assertion)
 }
 
+// TODO плагин больше не нужен, удалить
 gradlePlugin {
     plugins {
         create("settingsStubPlugin") {
