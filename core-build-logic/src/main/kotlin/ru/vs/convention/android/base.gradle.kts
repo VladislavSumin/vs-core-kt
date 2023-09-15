@@ -4,11 +4,11 @@ import ru.vs.build_logic.coreConfiguration
 import ru.vs.build_logic.utils.android
 
 android {
-    setCompileSdkVersion(33)
+    setCompileSdkVersion(34)
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
     }
 
     compileOptions {
