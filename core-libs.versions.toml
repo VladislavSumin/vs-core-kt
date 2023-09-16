@@ -6,9 +6,9 @@ kotlin-core = "1.9.10"
 ksp = "1.9.10-1.0.13"
 kotlin-coroutines = "1.7.3"
 kotlin-serialization = "1.6.0"
-kotlin-atomicfu = "0.20.2"
-kotlin-benchmark = "0.4.8"
-kotlin-kover = "0.7.2"
+kotlin-atomicfu = "0.22.0"
+kotlin-benchmark = "0.4.9"
+kotlin-kover = "0.7.3"
 
 # Android
 android-core = "1.9.0"
