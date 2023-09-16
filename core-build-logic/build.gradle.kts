@@ -41,13 +41,3 @@ dependencies {
     api(coreLibs.gradlePlugins.moko.resources)
     api(coreLibs.gradlePlugins.assertion)
 }
-
-// TODO плагин больше не нужен, удалить
-gradlePlugin {
-    plugins {
-        create("settingsStubPlugin") {
-            id = "ru.vs.plugins.settings-stub"
-            implementationClass = "ru.vs.plugins.settings_stub.SettingsStubPlugin"
-        }
-    }
-}
