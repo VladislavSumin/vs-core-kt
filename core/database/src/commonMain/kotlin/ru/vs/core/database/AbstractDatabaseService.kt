@@ -1,6 +1,7 @@
 package ru.vs.core.database
 
 import app.cash.sqldelight.Transacter
+import app.cash.sqldelight.db.QueryResult
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.db.SqlSchema
 import kotlinx.coroutines.sync.Mutex
@@ -21,7 +22,7 @@ abstract class AbstractDatabaseService<DATABASE : Transacter>(
     /**
      * Schema for [DATABASE]
      */
-    protected abstract val schema: SqlSchema
+    protected abstract val schema: SqlSchema<QueryResult.Value<Unit>>
 
     /**
      * Get [DATABASE] instance.

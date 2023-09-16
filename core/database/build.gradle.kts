@@ -35,7 +35,7 @@ kotlin {
         }
         if (project.coreConfiguration.kmp.js.isEnabled) named("jsMain") {
             dependencies {
-                implementation(coreLibs.sqldelight.sqljs)
+                // implementation(coreLibs.sqldelight.sqljs)
             }
         }
     }
