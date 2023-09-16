@@ -18,7 +18,7 @@ android-compose-compiler = "1.5.3"
 
 # Compose
 jb-compose = "1.5.1"
-decompose = "2.0.0-compose-experimental-alpha-02"
+decompose = "2.1.0-compose-experimental-beta-01"
 
 # Logging
 logging-log4j = "2.20.0"
