@@ -19,6 +19,8 @@ naming:
 formatting:
   MaximumLineLength:
     maxLineLength: 140
+  MultiLineIfElse:
+    active: false
 
 style:
   MaxLineLength:

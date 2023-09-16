@@ -48,7 +48,7 @@ testing-turbine = "0.12.3"
 # Plugins
 gradlePlugins-android = "8.1.1" # last version supported by idea comunity 2022.3.3
 gradlePlugins-checkUpdates = "0.46.0"
-gradlePlugins-detekt = "1.21.0"
+gradlePlugins-detekt = "1.23.1"
 gradlePlugins-buildConfig = "3.0.3"
 gradlePlugins-assertion = "2.3.1"
 
