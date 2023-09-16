@@ -55,13 +55,9 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
     }
 }
 
-// TODO make normal plugin or convention for access to CoreProjectConfiguration
-// We can't use rootProject as holder because when we add plugins to settings.gradle.kts then gradle evaluate this
-// module and evaluate all convention plugin (to generate dsl), but when evaluating for settings we're getting error
-// when trying to resolve rootProject. See https://github.com/gradle/gradle/issues/16532
 val Project.coreConfiguration: CoreProjectConfiguration
-    get() = extensions.findByType()
-        ?: extensions.create(
+    get() = rootProject.extensions.findByType()
+        ?: rootProject.extensions.create(
             CoreProjectConfiguration::class.java.simpleName,
             PropertyProvider { project.findProperty(it)?.toString() }
         )
