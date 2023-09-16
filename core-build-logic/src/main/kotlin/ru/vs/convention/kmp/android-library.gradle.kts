@@ -7,7 +7,7 @@ plugins {
 }
 
 kotlin {
-    android()
+    androidTarget()
 
     sourceSets {
         // TODO мониторить нюанс
