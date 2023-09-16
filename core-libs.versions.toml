@@ -26,9 +26,9 @@ logging-slf4j = "1.7.36"
 logging-kotlinLogging = "4.0.0-beta-28"
 
 # Other
-kodein = "7.20.1"
-ktor = "2.3.0"
-kotlinpoet = "1.13.1"
+kodein = "7.20.2"
+ktor = "2.3.4"
+kotlinpoet = "1.14.2"
 sqldelight = "2.0.0-alpha05"
 moko-resources = "0.21.2"
 essenty = "1.1.0"
