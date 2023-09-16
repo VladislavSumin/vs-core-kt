@@ -31,7 +31,7 @@ ktor = "2.3.4"
 kotlinpoet = "1.14.2"
 sqldelight = "2.0.0-alpha05"
 moko-resources = "0.21.2"
-essenty = "1.1.0"
+essenty-parcelable = "1.3.0-dev02"
 multiplatformSettings = "1.0.0"
 okio = "3.3.0"
 vlcj = "4.8.2"
@@ -132,7 +132,7 @@ decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jet
 decompose-android = { module = "com.arkivanov.decompose:extensions-android", version.ref = "decompose" }
 
 # Essenty
-essenty-parcelable = { module = "com.arkivanov.essenty:parcelable", version.ref = "essenty" }
+essenty-parcelable = { module = "com.arkivanov.essenty:parcelable", version.ref = "essenty-parcelable" }
 
 # Sqldelight
 sqldelight-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
