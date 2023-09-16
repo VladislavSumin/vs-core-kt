@@ -19,6 +19,7 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
 
     val ci = CI()
     val kmp = KMP()
+    val android = Android()
 
     inner class CI : Configuration("ci", this) {
         val isCI = property("", false)
@@ -46,6 +47,12 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
             val isEnabled = platforms.any { it.isEnabled }
         }
     }
+
+    inner class Android : Configuration("android", this) {
+        val minSdk = property("minSdk", 24)
+        val targetSdk = property("targetSdk", 34)
+        val compileSdk = property("compileSdk", 34)
+    }
 }
 
 // TODO make normal plugin or convention for access to CoreProjectConfiguration
@@ -58,8 +65,3 @@ val Project.coreConfiguration: CoreProjectConfiguration
             CoreProjectConfiguration::class.java.simpleName,
             PropertyProvider { project.findProperty(it)?.toString() }
         )
-
-// TODO make normal plugin or convention for access to CoreProjectConfiguration
-fun Settings.createCoreConfiguration(): CoreProjectConfiguration {
-    return CoreProjectConfiguration { this.providers.gradleProperty(it).orNull }
-}

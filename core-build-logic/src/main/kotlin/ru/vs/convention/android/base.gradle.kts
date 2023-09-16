@@ -3,12 +3,14 @@ package ru.vs.convention.android
 import ru.vs.build_logic.coreConfiguration
 import ru.vs.build_logic.utils.android
 
+val configuration = project.coreConfiguration
+
 android {
-    setCompileSdkVersion(34)
+    setCompileSdkVersion(configuration.android.compileSdk)
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 34
+        minSdk = configuration.android.minSdk
+        targetSdk = configuration.android.targetSdk
     }
 
     compileOptions {
