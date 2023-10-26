@@ -46,7 +46,7 @@ testing-mockito-kotlin = "5.1.0"
 testing-turbine = "1.0.0"
 
 # Plugins
-gradlePlugins-android = "8.1.1" # last version supported by idea comunity 2022.3.3
+gradlePlugins-android = "8.1.2"
 gradlePlugins-checkUpdates = "0.46.0"
 gradlePlugins-detekt = "1.23.1"
 gradlePlugins-buildConfig = "3.0.3"
