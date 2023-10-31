@@ -21,9 +21,9 @@ jb-compose = "1.5.1"
 decompose = "2.1.0-compose-experimental-beta-01"
 
 # Logging
-logging-log4j = "2.20.0"
-logging-slf4j = "2.0.3"
-logging-kotlinLogging = "4.0.0-beta-28"
+logging-log4j = "2.21.1"
+logging-slf4j = "2.0.9"
+logging-kotlinLogging = "5.1.0"
 
 # Other
 kodein = "7.20.2"
@@ -145,7 +145,7 @@ sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", 
 logging-kotlinLogging-core = { module = "io.github.oshai:kotlin-logging", version.ref = "logging-kotlinLogging" }
 logging-log4j-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "logging-log4j" }
 logging-log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "logging-log4j" }
-logging-log4j-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "logging-log4j" }
+logging-log4j-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "logging-log4j" }
 logging-slf4j = { module = "org.slf4j:slf4j-api", version.ref = "logging-slf4j" }
 
 # Code generation
