@@ -72,6 +72,7 @@ vs-core-network = { module = "ru.vs.core:network", version.ref = "vs-core" }
 vs-core-okio = { module = "ru.vs.core:okio", version.ref = "vs-core" }
 vs-core-serialization-core = { module = "ru.vs.core.serialization:core", version.ref = "vs-core" }
 vs-core-serialization-json = { module = "ru.vs.core.serialization:json", version.ref = "vs-core" }
+vs-core-uikit-autoSizeText = { module = "ru.vs.core.uikit:auto-size-text", version.ref = "vs-core" }
 vs-core-uikit-dropdownMenu = { module = "ru.vs.core.uikit:dropdown-menu", version.ref = "vs-core" }
 vs-core-uikit-localConfiguration = { module = "ru.vs.core.uikit:local-configuration", version.ref = "vs-core" }
 vs-core-uikit-videoPlayer = { module = "ru.vs.core.uikit:video-player", version.ref = "vs-core" }
