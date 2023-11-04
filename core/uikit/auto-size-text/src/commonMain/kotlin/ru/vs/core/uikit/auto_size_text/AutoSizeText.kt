@@ -138,7 +138,7 @@ fun AutoSizeText(
 
 @Preview
 @Composable
-fun AutoSizePreview() {
+private fun AutoSizePreview() {
     Column {
         Box(Modifier.size(200.dp, 300.dp)) {
             AutoSizeText(text = "This is a bunch of text that will fill the box", maxFontSize = 250.sp, maxLines = 2)
