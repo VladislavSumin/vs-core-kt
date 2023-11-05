@@ -72,3 +72,14 @@ fun WithDrawerNavigation(
         block()
     }
 }
+
+@Composable
+fun WithNoneNavigation(
+    block: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        LocalNavigationContext provides StaticNavigation(NavigationContext.NavigationType.None)
+    ) {
+        block()
+    }
+}
