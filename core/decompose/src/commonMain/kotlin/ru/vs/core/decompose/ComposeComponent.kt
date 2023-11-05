@@ -1,6 +1,7 @@
 package ru.vs.core.decompose
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ComponentContext
 
 /**
@@ -11,6 +12,8 @@ import com.arkivanov.decompose.ComponentContext
  * In conjunction with the MVIKotlin, this allows keep Store and Models internal without any additional mapping
  */
 interface ComposeComponent : ComponentContext {
+    // We can't use default value for modifier here, because compose now doesn't support default values
+    // for abstract composable functions
     @Composable
-    fun Render()
+    fun Render(modifier: Modifier)
 }
