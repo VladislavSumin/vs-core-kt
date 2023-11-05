@@ -2,8 +2,8 @@
 vs-core = "0.0.2"
 
 # Kotlin
-kotlin-core = "1.9.10"
-ksp = "1.9.10-1.0.13"
+kotlin-core = "1.9.20"
+ksp = "1.9.20-1.0.14"
 kotlin-coroutines = "1.7.3"
 kotlin-serialization = "1.6.0"
 kotlin-atomicfu = "0.22.0"
@@ -12,13 +12,13 @@ kotlin-kover = "0.7.3"
 
 # Android
 android-core = "1.12.0"
-android-activity = "1.7.2"
-android-activity-compose = "1.7.2"
+android-activity = "1.8.0"
+android-activity-compose = "1.8.0"
 android-compose-compiler = "1.5.3"
 
 # Compose
-jb-compose = "1.5.1"
-decompose = "2.1.0-compose-experimental-beta-01"
+jb-compose = "1.5.10"
+decompose = "2.1.2-compose-experimental"
 
 # Logging
 logging-log4j = "2.21.1"
@@ -47,7 +47,7 @@ testing-turbine = "1.0.0"
 
 # Plugins
 gradlePlugins-android = "8.1.2"
-gradlePlugins-checkUpdates = "0.46.0"
+gradlePlugins-checkUpdates = "0.49.0"
 gradlePlugins-detekt = "1.23.3"
 gradlePlugins-buildConfig = "3.0.3"
 gradlePlugins-assertion = "2.3.1"
