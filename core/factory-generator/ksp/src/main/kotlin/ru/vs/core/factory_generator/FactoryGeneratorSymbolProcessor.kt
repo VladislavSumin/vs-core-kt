@@ -24,7 +24,7 @@ import com.squareup.kotlinpoet.ksp.writeTo
 
 internal class FactoryGeneratorSymbolProcessor(
     private val codeGenerator: CodeGenerator,
-    logger: KSPLogger
+    private val logger: KSPLogger
 ) : SymbolProcessor {
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
@@ -37,10 +37,12 @@ internal class FactoryGeneratorSymbolProcessor(
         return try {
             processGenerateFactoryAnnotation(annotated)
             true
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             // We have cases when one generated factory using inside another generated factory,
             // for these cases we need to processing sources with more than once iteration
-            // TODO process errors correctly
+            false
+        } catch (e: Exception) {
+            logger.exception(e)
             false
         }
     }
