@@ -68,6 +68,7 @@ vs-core-ktor-network = { module = "ru.vs.core:ktor-network", version.ref = "vs-c
 vs-core-ktor-client = { module = "ru.vs.core:ktor-client", version.ref = "vs-core" }
 vs-core-ktor-server = { module = "ru.vs.core:ktor-server", version.ref = "vs-core" }
 vs-core-logging = { module = "ru.vs.core:logging", version.ref = "vs-core" }
+vs-core-navigation = { module = "ru.vs.core:navigation", version.ref = "vs-core" }
 vs-core-network = { module = "ru.vs.core:network", version.ref = "vs-core" }
 vs-core-okio = { module = "ru.vs.core:okio", version.ref = "vs-core" }
 vs-core-serialization-core = { module = "ru.vs.core.serialization:core", version.ref = "vs-core" }
