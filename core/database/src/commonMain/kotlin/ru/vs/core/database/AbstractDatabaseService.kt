@@ -9,6 +9,7 @@ import kotlinx.coroutines.sync.withLock
 
 abstract class AbstractDatabaseService<DATABASE : Transacter>(
     private val factory: DatabaseDriverFactory,
+    private val name: String = "database"
 ) {
     private val lock = Mutex()
 
@@ -39,7 +40,7 @@ abstract class AbstractDatabaseService<DATABASE : Transacter>(
      * Call this function allow only inside [lock] mutex!
      */
     private suspend fun initDatabase(): DATABASE {
-        val driver = factory.create(schema)
+        val driver = factory.create(name, schema)
         val db = createDatabaseFromDriver(driver)
         database = db
         return db

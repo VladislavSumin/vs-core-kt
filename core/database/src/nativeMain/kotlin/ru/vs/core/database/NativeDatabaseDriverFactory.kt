@@ -7,8 +7,8 @@ import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import org.kodein.di.DirectDI
 
 private class NativeDatabaseDriverFactory : DatabaseDriverFactory {
-    override suspend fun create(schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
-        return NativeSqliteDriver(schema, "database.db")
+    override suspend fun create(name: String, schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
+        return NativeSqliteDriver(schema, "$name.db")
     }
 }
 

@@ -8,9 +8,9 @@ import org.kodein.di.DirectDI
 import java.io.File
 
 private class JvmDatabaseDriverFactory : DatabaseDriverFactory {
-    override suspend fun create(schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
+    override suspend fun create(name: String, schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
         // TODO add normal schema check
-        val isDbExists = File("database.db").exists()
+        val isDbExists = File("$name.db").exists()
         val driver: SqlDriver = JdbcSqliteDriver("jdbc:sqlite:database.db")
         if (!isDbExists) {
             schema.create(driver)

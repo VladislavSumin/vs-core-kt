@@ -10,7 +10,7 @@ interface DatabaseDriverFactory {
      * Create [SqlDriver] driver for database
      * If database not exist initialize it with given [SqlSchema]
      */
-    suspend fun create(schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver
+    suspend fun create(name: String, schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver
 }
 
 /**

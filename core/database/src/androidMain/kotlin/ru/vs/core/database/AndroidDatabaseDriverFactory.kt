@@ -9,8 +9,8 @@ import org.kodein.di.DirectDI
 import org.kodein.di.instance
 
 private class AndroidDatabaseDriverFactory(private val context: Context) : DatabaseDriverFactory {
-    override suspend fun create(schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
-        return AndroidSqliteDriver(schema, context, "database.db")
+    override suspend fun create(name: String, schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
+        return AndroidSqliteDriver(schema, context, "$name.db")
     }
 }
 
