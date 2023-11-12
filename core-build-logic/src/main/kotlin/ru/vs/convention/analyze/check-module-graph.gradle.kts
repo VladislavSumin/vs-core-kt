@@ -17,5 +17,6 @@ moduleGraphAssert {
         ".* -> :core:.*",
         ".*-api -> .*-api",
         ".*-impl -> .*-api",
+        ".*-ksp -> .*-api",
     )
 }
