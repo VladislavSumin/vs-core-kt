@@ -14,7 +14,7 @@ kotlin-kover = "0.7.3"
 android-core = "1.12.0"
 android-activity = "1.8.0"
 android-activity-compose = "1.8.0"
-android-compose-compiler = "1.5.3"
+android-compose-compiler = "1.5.4"
 
 # Compose
 jb-compose = "1.5.10"
