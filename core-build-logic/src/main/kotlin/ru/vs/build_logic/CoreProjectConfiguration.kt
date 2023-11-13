@@ -15,7 +15,7 @@ import ru.vs.build_logic.utils.PropertyProvider
 open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
     Configuration("ru.vs.core", propertyProvider) {
 
-    val jvmVersion = property("jvmVersion", "17")
+    val jvmVersion = property("jvmVersion", "21")
 
     val ci = CI()
     val kmp = KMP()
