@@ -1,5 +1,7 @@
 package ru.vs.convention.kmp
 
+import ru.vs.build_logic.coreConfiguration
+
 plugins {
     id("ru.vs.convention.kmp.common")
     id("com.android.library")
@@ -7,7 +9,13 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = project.coreConfiguration.jvmVersion
+            }
+        }
+    }
 
     sourceSets {
         // TODO мониторить нюанс

@@ -46,7 +46,7 @@ testing-mockito-kotlin = "5.1.0"
 testing-turbine = "1.0.0"
 
 # Plugins
-gradlePlugins-android = "8.1.2"
+gradlePlugins-android = "8.2.0-rc03"
 gradlePlugins-checkUpdates = "0.49.0"
 gradlePlugins-detekt = "1.23.3"
 gradlePlugins-buildConfig = "3.0.3"
