@@ -15,7 +15,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.vs.core.uikit.local_configuration"
+    namespace = "ru.vs.core.uikit.utils"
 }
 
 kotlin {
