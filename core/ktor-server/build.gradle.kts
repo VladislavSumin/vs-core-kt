@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.vs.core.ktor-server"
+    namespace = "ru.vs.core.ktor_server"
 }
 
 kotlin {
