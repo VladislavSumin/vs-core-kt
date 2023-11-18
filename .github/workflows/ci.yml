@@ -25,6 +25,5 @@ jobs:
       - name: Run gradle
         run: >-
           ./gradlew 
-          :core-build-logic:publish
           assemble
           --stacktrace
