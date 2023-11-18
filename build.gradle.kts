@@ -33,6 +33,7 @@ allprojects {
                 credentials {
                     username = providers.gradleProperty("ru.vs.core.mvn.user").get()
                     password = System.getenv("MAVEN_TOKEN")
+                }
             }
         }
     }
