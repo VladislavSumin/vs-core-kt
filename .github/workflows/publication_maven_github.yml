@@ -32,5 +32,5 @@ jobs:
           :core-build-logic:publish
           publish
           -Pru.vs.core.version=${{ github.event.inputs.version }}
-          -Pru.vs.core.maven.user=vsum
+          -Pru.vs.core.mvn.user=vsum
           --stacktrace
