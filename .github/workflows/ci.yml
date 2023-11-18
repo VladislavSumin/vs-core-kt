@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: assemble
+    runs-on: macos-12
+    timeout-minutes: 60
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 21
+          cache: gradle
+
+      - name: Run gradle
+        run: >-
+          ./gradlew 
+          :core-build-logic:publish
+          assemble
+          --stacktrace
