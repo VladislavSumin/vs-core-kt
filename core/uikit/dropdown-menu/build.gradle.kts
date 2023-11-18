@@ -11,7 +11,7 @@ plugins {
     // KMM Test library don't support wasm now
     // id("ru.vs.convention.kmp.wasm")
 
-    id("org.jetbrains.compose")
+    id("ru.vs.convention.compose")
 }
 
 android {
