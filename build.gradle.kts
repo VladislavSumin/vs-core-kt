@@ -28,12 +28,11 @@ allprojects {
     publishing {
         repositories {
             maven {
-                name = "ByteSafeMaven"
-                url = uri("https://sumin.bytesafe.dev/maven/vs-core/")
+                name = "respyMaven"
+                url = uri(providers.gradleProperty("ru.vs.core.mvn.url").get())
                 credentials {
-                    username = "bytesafe"
-                    password = System.getenv("BYTESAFE_TOKEN")
-                }
+                    username = providers.gradleProperty("ru.vs.core.mvn.user").get()
+                    password = System.getenv("MAVEN_TOKEN")
             }
         }
     }

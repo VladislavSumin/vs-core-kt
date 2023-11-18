@@ -26,9 +26,10 @@ jobs:
 
       - name: Run gradle
         env:
-          BYTESAFE_TOKEN: ${{ secrets.BYTESAFE_TOKEN }}
+          MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
         run: >-
           ./gradlew 
           :core-build-logic:publish
           publish
           -Pru.vs.core.version=${{ github.event.inputs.version }}
+          -Pru.vs.core.maven.user=vsum
