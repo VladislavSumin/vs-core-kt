@@ -33,3 +33,4 @@ jobs:
           publish
           -Pru.vs.core.version=${{ github.event.inputs.version }}
           -Pru.vs.core.maven.user=vsum
+          --stacktrace
