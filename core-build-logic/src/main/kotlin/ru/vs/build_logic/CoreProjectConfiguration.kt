@@ -27,7 +27,10 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
     }
 
     inner class KMP : Configuration("kmp", this) {
+        val android = PlatformConfig("android")
+
         val js = PlatformConfig("js")
+
         val linuxX64 = PlatformConfig("linuxX64")
         val mingwX64 = PlatformConfig("mingwX64")
 
@@ -38,6 +41,11 @@ open class CoreProjectConfiguration(propertyProvider: PropertyProvider) :
         val iosX64 = PlatformConfig("iosX64")
         val iosArm64 = PlatformConfig("iosArm64")
         val ios = MergedPlatformConfig(iosX64, iosArm64)
+
+        val native = MergedPlatformConfig(
+            // TODO сделать нормальную иерархию
+            iosX64, iosArm64, macosX64, macosArm64, linuxX64, mingwX64
+        )
 
         inner class PlatformConfig(platformName: String) : Configuration(platformName, this) {
             val isEnabled = property("enabled", true)

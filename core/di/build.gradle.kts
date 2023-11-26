@@ -1,3 +1,5 @@
+import ru.vs.build_logic.coreConfiguration
+
 plugins {
     id("ru.vs.convention.kmp.all")
 }
@@ -13,7 +15,7 @@ kotlin {
                 api(coreLibs.kodein.core)
             }
         }
-        named("androidMain") {
+        if (project.coreConfiguration.kmp.android.isEnabled) named("androidMain") {
             dependencies {
                 api(coreLibs.kodein.android)
             }

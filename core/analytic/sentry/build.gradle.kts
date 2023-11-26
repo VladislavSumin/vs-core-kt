@@ -1,3 +1,5 @@
+import ru.vs.build_logic.coreConfiguration
+
 plugins {
     id("ru.vs.convention.kmp.all")
 }
@@ -20,7 +22,7 @@ kotlin {
             }
         }
 
-        named("androidMain"){
+        if (project.coreConfiguration.kmp.android.isEnabled) named("androidMain") {
             dependencies {
                 implementation(coreLibs.sentry)
             }

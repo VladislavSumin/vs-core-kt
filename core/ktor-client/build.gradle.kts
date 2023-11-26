@@ -28,7 +28,7 @@ kotlin {
             }
         }
 
-        named("androidMain") {
+        if (project.coreConfiguration.kmp.android.isEnabled) named("androidMain") {
             dependencies {
                 implementation(coreLibs.ktor.client.cio)
             }

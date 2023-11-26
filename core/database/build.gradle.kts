@@ -18,7 +18,7 @@ kotlin {
                 implementation(projects.core.di)
             }
         }
-        named("androidMain") {
+        if (project.coreConfiguration.kmp.android.isEnabled) named("androidMain") {
             dependencies {
                 implementation(coreLibs.sqldelight.android)
             }
@@ -28,7 +28,7 @@ kotlin {
                 implementation(coreLibs.sqldelight.sqlite)
             }
         }
-        named("nativeMain") {
+        if (project.coreConfiguration.kmp.native.isEnabled) named("nativeMain") {
             dependencies {
                 implementation(coreLibs.sqldelight.native)
             }
