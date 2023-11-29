@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  assemble:
     name: assemble
     runs-on: macos-12
     timeout-minutes: 60
@@ -27,3 +27,5 @@ jobs:
           ./gradlew 
           assemble
           --stacktrace
+          -Pru.vs.core.kmp.android.enabled=false
+          -Pru.vs.core.kmp.js.enabled=false
