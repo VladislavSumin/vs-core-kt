@@ -2,7 +2,7 @@
 vs-core = "0.0.2"
 
 # Kotlin
-kotlin-core = "1.9.20"
+kotlin-core = "2.0.0-Beta1"
 ksp = "1.9.20-1.0.14"
 kotlin-coroutines = "1.7.3"
 kotlin-serialization = "1.6.0"
@@ -17,7 +17,7 @@ android-activity-compose = "1.8.0"
 android-compose-compiler = "1.5.4"
 
 # Compose
-jb-compose = "1.6.0-dev1276"
+jb-compose = "1.6.0-dev1291"
 decompose = "2.1.2-compose-experimental"
 
 # Logging
