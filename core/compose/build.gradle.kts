@@ -1,3 +1,5 @@
+import ru.vs.build_logic.coreConfiguration
+
 plugins {
 
     id("ru.vs.convention.kmp.android-library")
@@ -37,7 +39,7 @@ kotlin {
                 implementation(coreLibs.kotlin.coroutines.swing)
             }
         }
-        named("androidMain") {
+        if (project.coreConfiguration.kmp.android.isEnabled) named("androidMain") {
             dependencies {
                 api(coreLibs.android.activity.compose)
             }
