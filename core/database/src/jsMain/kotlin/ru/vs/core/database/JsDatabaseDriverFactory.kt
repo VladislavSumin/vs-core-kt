@@ -1,14 +1,15 @@
 package ru.vs.core.database
 
-import app.cash.sqldelight.db.SqlDriver
+//import app.cash.sqldelight.driver.sqljs.initSqlDriver
+import app.cash.sqldelight.db.QueryResult
 import app.cash.sqldelight.db.SqlSchema
-import app.cash.sqldelight.driver.sqljs.initSqlDriver
-import kotlinx.coroutines.await
+import app.cash.sqldelight.db.SqlDriver
 import org.kodein.di.DirectDI
 
 private class JsDatabaseDriverFactory : DatabaseDriverFactory {
-    override suspend fun create(schema: SqlSchema): SqlDriver {
-        return initSqlDriver(schema).await()
+    override suspend fun create(name: String, schema: SqlSchema<QueryResult.Value<Unit>>): SqlDriver {
+        // return initSqlDriver(schema).await()
+        TODO()
     }
 }
 
