@@ -27,5 +27,4 @@ jobs:
           ./gradlew 
           assemble
           --stacktrace
-          -Pru.vs.core.kmp.android.enabled=false
-          -Pru.vs.core.kmp.js.enabled=false
+          --no-configuration-cache
