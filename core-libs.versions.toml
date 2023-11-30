@@ -3,7 +3,7 @@ vs-core = "0.0.2"
 
 # Kotlin
 kotlin-core = "2.0.0-Beta1"
-ksp = "1.9.20-1.0.14"
+ksp = "2.0.0-Beta1-1.0.15"
 kotlin-coroutines = "1.7.3"
 kotlin-serialization = "1.6.0"
 kotlin-atomicfu = "0.22.0"
