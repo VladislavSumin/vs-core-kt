@@ -2,6 +2,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     id("ru.vs.convention.check-updates")
+    id("ru.vs.convention.test.merge-test-reports")
     `maven-publish`
 }
 
@@ -52,3 +53,20 @@ val detektBuildLogic = tasks.register<Detekt>("detektBuildLogic") {
     }
 }
 tasks.named("detekt").configure { dependsOn(detektBuildLogic) }
+
+tasks.register("ci") {
+    // Build
+    allprojects {
+        val assemble = tasks.findByName("assemble")
+        if (assemble != null) dependsOn(assemble)
+    }
+
+    // Tests
+    allprojects {
+        val allTests = tasks.findByName("allTest")
+        if (allTests != null) dependsOn(allTests)
+    }
+    dependsOn("generateMergedTestReport")
+
+    dependsOn(":dependencyUpdates")
+}

@@ -25,6 +25,6 @@ jobs:
       - name: Run gradle
         run: >-
           ./gradlew 
-          assemble
+          ci
           --stacktrace
           --no-configuration-cache
