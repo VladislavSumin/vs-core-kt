@@ -2,6 +2,7 @@ package ru.vs.core.utils
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class StringExtTest {
     @Test
@@ -10,6 +11,9 @@ class StringExtTest {
             expected = "test",
             actual = "Test".decapitalized()
         )
+
+        // check test failed
+        assertTrue(false)
     }
 
     @Test

@@ -28,6 +28,7 @@ allprojects {
         doLast {
             generateMergedTestReport.configure { testResults.from(binaryResultsDirectory) }
         }
+        finalizedBy(generateMergedTestReport)
     }
 
     generateMergedTestReport.configure { mustRunAfter(testTasks) }

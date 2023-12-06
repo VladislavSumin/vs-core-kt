@@ -63,10 +63,10 @@ tasks.register("ci") {
 
     // Tests
     allprojects {
-        val allTests = tasks.findByName("allTest")
+        val allTests = tasks.findByName("allTests")
         if (allTests != null) dependsOn(allTests)
     }
-    dependsOn("generateMergedTestReport")
+    dependsOn(":generateMergedTestReport")
 
     dependsOn(":dependencyUpdates")
 }
