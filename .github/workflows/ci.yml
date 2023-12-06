@@ -34,5 +34,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: unit-test-report
-          path: "build/reports/mergedTestReport/**"
+          path: "build/reports/mergedTestReport/"
           if-no-files-found: error
