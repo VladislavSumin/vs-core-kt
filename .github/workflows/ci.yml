@@ -28,3 +28,11 @@ jobs:
           ci
           --stacktrace
           --no-configuration-cache
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-test-report
+          path: "build/reports/mergedTestReport/**"
+          if-no-files-found: error
