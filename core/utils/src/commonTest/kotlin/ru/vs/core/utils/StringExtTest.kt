@@ -13,7 +13,7 @@ class StringExtTest {
         )
 
         // check test failed
-        assertTrue(false)
+        // assertTrue(false)
     }
 
     @Test
