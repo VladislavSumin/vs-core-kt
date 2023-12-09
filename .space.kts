@@ -1,6 +1,6 @@
 job("Build && Test") {
     gradlew(
-        image = "openjdk:21",
+        image = "azul/zulu-openjdk:21",
 
         "ci",
         "--continue",
